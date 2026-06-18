@@ -2,13 +2,12 @@
 
 import { motion } from "framer-motion";
 import { projects } from "../portfolio-data";
-import { CardLink, FloatingBlobs, FloatingCharacter, PageHero, SiteNav } from "../shared";
+import { CardLink, FloatingBlobs, PageHero, SiteNav } from "../shared";
 
 export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />
-      <FloatingCharacter />
       <SiteNav />
       <PageHero eyebrow="Projects" title="Applied AI Systems">
         <p>Research and engineering projects spanning LLMs, recommender systems, NLP, simulations, and accessibility.</p>

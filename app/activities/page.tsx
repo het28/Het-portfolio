@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { activities } from "../portfolio-data";
-import { CardLink, FloatingBlobs, FloatingCharacter, PageIntro, SiteNav } from "../shared";
+import { CardLink, FloatingBlobs, PageIntro, SiteNav } from "../shared";
 
 const groups = [
   { title: "Chairing", items: activities.chairing },
@@ -14,7 +14,6 @@ export default function ActivitiesPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />
-      <FloatingCharacter placement="intro" />
       <SiteNav />
       <PageIntro eyebrow="Activities" title="Chairing and Committees">
         <p>{activities.intro}</p>

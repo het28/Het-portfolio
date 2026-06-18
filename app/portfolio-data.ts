@@ -1,7 +1,6 @@
 import {
   BookOpen,
   BriefcaseBusiness,
-  FileText,
   Github,
   GraduationCap,
   Linkedin,
@@ -32,7 +31,6 @@ export const profile = {
 export const navLinks = [
   { label: "About", href: "/" },
   { label: "Activities", href: "/activities" },
-  { label: "CV", href: "/cv" },
   { label: "Projects", href: "/projects" },
   { label: "Publications", href: "/publications" },
 ];
@@ -304,12 +302,6 @@ export const socialLinks = [
     icon: Mail,
   },
   {
-    label: "CV",
-    href: "cv",
-    icon: FileText,
-    isAsset: true,
-  },
-  {
     label: "HCAI Profile",
     href: "https://www.hcai.ovgu.de/Staff/GEI/Het%2BDarshan%2BMehta.html",
     icon: BriefcaseBusiness,
@@ -320,7 +312,6 @@ export const contactCards = [
   { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
   { label: "Phone", value: profile.phone, href: `tel:${profile.phone.replaceAll(" ", "")}`, icon: Phone },
   { label: "Location", value: profile.location, href: "", icon: MapPin },
-  { label: "CV", value: "Open CV page", href: "cv", icon: FileText, isAsset: true },
 ];
 
 export const editHints = [

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, BookOpen, Check, Copy, FileText, FolderOpen, Mail, Quote } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { ArrowUpRight, Check, Copy, ExternalLink, Quote } from "lucide-react";
 import { navLinks, profile } from "./portfolio-data";
 
 export function assetPath(path: string) {
@@ -12,6 +12,36 @@ export function assetPath(path: string) {
 
 function shouldOpenNewTab(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+}
+
+export function SiteCursor() {
+  const cursorX = useMotionValue(-120);
+  const cursorY = useMotionValue(-120);
+  const smoothCursorX = useSpring(cursorX, { stiffness: 320, damping: 32 });
+  const smoothCursorY = useSpring(cursorY, { stiffness: 320, damping: 32 });
+
+  useEffect(() => {
+    function moveCursor(event: PointerEvent) {
+      cursorX.set(event.clientX - 18);
+      cursorY.set(event.clientY - 18);
+    }
+
+    window.addEventListener("pointermove", moveCursor);
+    return () => window.removeEventListener("pointermove", moveCursor);
+  }, [cursorX, cursorY]);
+
+  return (
+    <>
+      <motion.div
+        style={{ x: smoothCursorX, y: smoothCursorY }}
+        className="custom-cursor pointer-events-none fixed left-0 top-0 z-[90] hidden h-9 w-9 border border-white/35 bg-white/10 mix-blend-screen backdrop-blur-sm md:block"
+      />
+      <motion.div
+        style={{ x: smoothCursorX, y: smoothCursorY }}
+        className="custom-cursor-glow pointer-events-none fixed left-[-2.1rem] top-[-2.1rem] z-[89] hidden h-28 w-28 bg-white/10 blur-2xl md:block"
+      />
+    </>
+  );
 }
 
 export function SiteNav() {
@@ -33,12 +63,13 @@ export function SiteNav() {
           ))}
         </div>
         <a
-          href={assetPath("cv")}
+          href={assetPath(profile.resumePath)}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
         >
           CV
+          <ExternalLink className="h-3.5 w-3.5" />
         </a>
       </nav>
     </header>
@@ -59,73 +90,6 @@ export function FloatingBlobs() {
         className="absolute right-[-8rem] top-36 h-96 w-96 rounded-full bg-slate-300/12 blur-3xl"
       />
     </div>
-  );
-}
-
-export function FloatingCharacter({ placement = "corner" }: { placement?: "corner" | "intro" }) {
-  const { scrollYProgress } = useScroll();
-  const floatY = useTransform(scrollYProgress, [0, 1], [0, -34]);
-  const floatRotate = useTransform(scrollYProgress, [0, 1], [0, -3]);
-  const floatScale = useTransform(scrollYProgress, [0, 0.55, 1], [1, 0.92, 0.82]);
-  const floatOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [0.96, 0.86, 0.68]);
-  const placementClass =
-    placement === "intro"
-      ? "fixed right-5 top-32 z-40 hidden w-20 sm:block lg:right-10 lg:w-24"
-      : "fixed bottom-4 right-4 z-40 hidden w-20 sm:block lg:w-24";
-
-  const actions = [
-    { label: "CV", href: assetPath("cv"), icon: FileText },
-    { label: "Publications", href: assetPath("publications"), icon: BookOpen },
-    { label: "Projects", href: assetPath("projects"), icon: FolderOpen },
-    { label: "Contact", href: `mailto:${profile.email}`, icon: Mail },
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 34, y: 34, scale: 0.9 }}
-      animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-      style={{ y: floatY, rotate: floatRotate, scale: floatScale, opacity: floatOpacity }}
-      className={`pointer-events-auto ${placementClass}`}
-    >
-      <motion.div
-        whileHover={{ rotate: -2.5, scale: 1.03 }}
-        animate={{ y: [0, -8, 0], rotate: [0, 1.1, -1.1, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="group relative"
-      >
-        <div className="absolute bottom-2 left-1/2 h-8 w-24 -translate-x-1/2 rounded-full bg-white/14 blur-xl" />
-        <motion.div
-          animate={{ opacity: [0.32, 0.76, 0.32], scale: [0.92, 1.08, 0.92] }}
-          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[32%] top-[34%] z-10 h-8 w-8 rounded-full bg-cyan-200/45 blur-md"
-        />
-        <img
-          src={assetPath("het-3d-character.png")}
-          alt=""
-          className="character-avatar relative h-auto w-full drop-shadow-[0_24px_55px_rgba(0,0,0,0.55)]"
-        />
-        <div className="pointer-events-auto absolute -left-4 top-1/2 flex -translate-x-full -translate-y-1/2 flex-col gap-2 opacity-75 transition duration-300 group-hover:opacity-100">
-          {actions.map((action) => {
-            const Icon = action.icon;
-            return (
-              <a
-                key={action.label}
-                href={action.href}
-                target="_blank"
-                rel="noreferrer"
-                className="group/action relative flex h-10 w-10 items-center justify-center rounded-full border border-white/14 bg-black/35 text-white/74 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-2xl transition hover:border-white/35 hover:bg-white/14 hover:text-white"
-              >
-                <Icon className="h-4 w-4" />
-                <span className="pointer-events-none absolute right-12 whitespace-nowrap rounded-full border border-white/12 bg-black/55 px-3 py-1 text-xs text-white/70 opacity-0 backdrop-blur-xl transition group-hover/action:opacity-100">
-                  {action.label}
-                </span>
-              </a>
-            );
-          })}
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }
 

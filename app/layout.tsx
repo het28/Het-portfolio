@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { profile } from "./portfolio-data";
+import { SiteCursor } from "./shared";
 
 export const metadata: Metadata = {
   title: `${profile.name} | Portfolio`,
@@ -17,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteCursor />
+        {children}
+      </body>
     </html>
   );
 }

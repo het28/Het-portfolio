@@ -2,13 +2,12 @@
 
 import { motion } from "framer-motion";
 import { publications } from "../portfolio-data";
-import { CardLink, CitationButton, FloatingBlobs, FloatingCharacter, PageIntro, SiteNav } from "../shared";
+import { CardLink, CitationButton, FloatingBlobs, PageIntro, SiteNav } from "../shared";
 
 export default function PublicationsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />
-      <FloatingCharacter placement="intro" />
       <SiteNav />
       <PageIntro eyebrow="Publications" title="Selected Research Work">
         <p>Publications and workshop papers across recommender systems, knowledge graphs, fairness, and AI for education.</p>

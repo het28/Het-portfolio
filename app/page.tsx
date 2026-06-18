@@ -2,13 +2,10 @@
 
 import {
   motion,
-  useMotionValue,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import {
-  ArrowDownToLine,
   ArrowUpRight,
   BookOpen,
   ExternalLink,
@@ -50,12 +47,12 @@ function shouldOpenNewTab(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
 }
 
+function shouldOpenNewTabItem(item: { href: string; isAsset?: boolean }) {
+  return item.isAsset || shouldOpenNewTab(item.href);
+}
+
 export default function Home() {
   const { scrollY, scrollYProgress } = useScroll();
-  const cursorX = useMotionValue(-120);
-  const cursorY = useMotionValue(-120);
-  const smoothCursorX = useSpring(cursorX, { stiffness: 320, damping: 32 });
-  const smoothCursorY = useSpring(cursorY, { stiffness: 320, damping: 32 });
   const nameY = useTransform(scrollY, [0, 760], [74, -170]);
   const heroPanelY = useTransform(scrollY, [0, 760], [0, 58]);
   const heroPanelScale = useTransform(scrollY, [0, 760], [1, 0.94]);
@@ -64,21 +61,7 @@ export default function Home() {
   const imageY = useTransform(scrollY, [0, 760], [0, 42]);
 
   return (
-    <main
-      onPointerMove={(event) => {
-        cursorX.set(event.clientX - 18);
-        cursorY.set(event.clientY - 18);
-      }}
-      className="relative min-h-screen overflow-hidden bg-ink text-white"
-    >
-      <motion.div
-        style={{ x: smoothCursorX, y: smoothCursorY }}
-        className="custom-cursor pointer-events-none fixed left-0 top-0 z-[90] hidden h-9 w-9 border border-white/35 bg-white/10 mix-blend-screen backdrop-blur-sm md:block"
-      />
-      <motion.div
-        style={{ x: smoothCursorX, y: smoothCursorY }}
-        className="custom-cursor-glow pointer-events-none fixed left-[-2.1rem] top-[-2.1rem] z-[89] hidden h-28 w-28 bg-white/10 blur-2xl md:block"
-      />
+    <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <motion.div
         style={{ scaleX: scrollYProgress }}
         className="fixed left-0 right-0 top-0 z-[70] h-1 origin-left bg-gradient-to-r from-white via-slate-300 to-cyan-100"
@@ -100,7 +83,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 46, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.95, ease: "easeOut" }}
-          className="glass glass-card hero-device relative z-10 mx-auto min-h-[620px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
+          className="glass glass-card hero-device relative z-10 mx-auto min-h-[680px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
         >
           <div className="silk-bg absolute inset-0" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_35%,rgba(255,255,255,0.16),transparent_18rem),linear-gradient(120deg,rgba(255,255,255,0.14),transparent_38%,rgba(255,255,255,0.06)_64%,transparent)]" />
@@ -119,21 +102,21 @@ export default function Home() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="absolute left-1/2 top-0 h-full w-1/3 -translate-x-1/2 rotate-12 bg-white/10 blur-3xl"
           />
-          <p className="absolute left-1/2 top-14 z-20 w-full -translate-x-1/2 px-4 text-center text-[3.3rem] font-semibold uppercase leading-none tracking-normal text-white/88 sm:text-[5.7rem] lg:text-[7.8rem]">
+          <p className="absolute left-1/2 top-12 z-20 w-full -translate-x-1/2 px-4 text-center text-[2.6rem] font-semibold uppercase leading-none tracking-normal text-white/88 sm:top-14 sm:text-[5.7rem] lg:text-[7.8rem]">
             Het Darshan Mehta
           </p>
-          <div className="absolute bottom-32 right-6 z-20 text-right sm:right-10">
-            <p className="max-w-[20rem] leading-tight text-white">
-              <span className="block text-xs font-medium uppercase tracking-[0.18em] text-white/42">
+          <div className="absolute left-4 right-4 top-[8.7rem] z-40 rounded-3xl border border-white/12 bg-black/24 p-4 text-center backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:backdrop-blur-0">
+            <p className="leading-tight text-white">
+              <span className="block text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/42 sm:text-xs">
                 Het Darshan Mehta
               </span>
-              <span className="mt-3 block text-2xl font-semibold text-white sm:text-4xl">
+              <span className="mt-2 block text-xl font-semibold text-white sm:mt-3 sm:text-4xl">
                 PhD Researcher
               </span>
-              <span className="mt-3 block text-xs font-medium uppercase tracking-[0.18em] text-white/50">
+              <span className="mt-2 block text-[0.65rem] font-medium uppercase tracking-[0.14em] text-white/56 sm:mt-3 sm:text-xs sm:tracking-[0.18em] sm:text-white/50">
                 {profile.tagline}
               </span>
-              <span className="mt-3 block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white/36">
+              <span className="mt-2 block text-[0.62rem] font-medium uppercase tracking-[0.16em] text-white/40 sm:mt-3 sm:text-[0.7rem] sm:tracking-[0.18em] sm:text-white/36">
                 Magdeburg / Braunschweig, Germany
               </span>
             </p>
@@ -143,7 +126,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 34, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.95, ease: "easeOut", delay: 0.1 }}
-            className="absolute inset-x-0 bottom-0 z-30 mx-auto flex w-full max-w-[330px] justify-center sm:max-w-[390px] lg:max-w-[420px]"
+            className="absolute inset-x-0 bottom-0 z-30 mx-auto flex w-full max-w-[285px] justify-center sm:max-w-[390px] lg:max-w-[420px]"
           >
             <motion.div
               whileHover={{ y: 8, scale: 0.985 }}
@@ -186,17 +169,6 @@ export default function Home() {
                 </motion.a>
               );
             })}
-            <motion.a
-              href={assetPath("cv")}
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ y: -3, scale: 1.04 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:bg-cyan-100"
-            >
-              <ArrowDownToLine className="h-4 w-4" />
-              CV
-            </motion.a>
           </div>
           <motion.a
             href="#research"
@@ -427,8 +399,8 @@ export default function Home() {
                     <motion.a
                       key={item.label}
                       href={linkPath(item)}
-                      target={shouldOpenNewTab(item.href) ? "_blank" : undefined}
-                      rel={shouldOpenNewTab(item.href) ? "noreferrer" : undefined}
+                      target={shouldOpenNewTabItem(item) ? "_blank" : undefined}
+                      rel={shouldOpenNewTabItem(item) ? "noreferrer" : undefined}
                       aria-label={item.label}
                       whileHover={{ y: -4, scale: 1.08 }}
                       whileTap={{ scale: 0.96 }}
@@ -460,8 +432,8 @@ export default function Home() {
                   <a
                     key={card.label}
                     href={linkPath(card)}
-                    target={shouldOpenNewTab(card.href) ? "_blank" : undefined}
-                    rel={shouldOpenNewTab(card.href) ? "noreferrer" : undefined}
+                    target={shouldOpenNewTabItem(card) ? "_blank" : undefined}
+                    rel={shouldOpenNewTabItem(card) ? "noreferrer" : undefined}
                     className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/10 p-4 transition hover:border-cyan-200/55 hover:bg-white/16"
                   >
                     {content}
@@ -503,12 +475,13 @@ function Navbar() {
           ))}
         </div>
         <a
-          href={assetPath("cv")}
+          href={assetPath(profile.resumePath)}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
         >
           CV
+          <ExternalLink className="h-3.5 w-3.5" />
         </a>
       </nav>
     </header>
