@@ -105,7 +105,7 @@ export default function Home() {
           <p className="absolute left-1/2 top-10 z-20 w-full -translate-x-1/2 px-4 text-center text-[2.8rem] font-semibold uppercase leading-none tracking-normal text-white/88 sm:top-14 sm:text-[5.7rem] lg:text-[7.8rem]">
             Het Darshan Mehta
           </p>
-          <div className="absolute left-4 right-4 bottom-[11rem] z-40 rounded-3xl border border-white/18 bg-black/28 p-4 text-center shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:shadow-none sm:backdrop-blur-0">
+          <div className="absolute left-4 right-4 bottom-[9.25rem] z-40 rounded-3xl border border-white/18 bg-black/32 p-4 text-center shadow-[0_22px_70px_rgba(0,0,0,0.3)] backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:shadow-none sm:backdrop-blur-0">
             <p className="leading-tight text-white">
               <span className="hidden text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/42 sm:block sm:text-xs">
                 Het Darshan Mehta
@@ -126,7 +126,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 34, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.95, ease: "easeOut", delay: 0.1 }}
-            className="absolute inset-x-0 bottom-[17.5rem] z-30 mx-auto flex w-full max-w-[385px] justify-center sm:bottom-0 sm:max-w-[390px] lg:max-w-[420px]"
+            className="absolute inset-x-0 bottom-[12.6rem] z-30 mx-auto flex w-full max-w-[385px] justify-center sm:bottom-0 sm:max-w-[390px] lg:max-w-[420px]"
           >
             <motion.div
               whileHover={{ y: 8, scale: 0.985 }}
