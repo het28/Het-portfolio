@@ -316,7 +316,7 @@ export const contactCards = [
 
 export const editHints = [
   "Change text, links, projects, skills, and publications in app/portfolio-data.ts.",
-  "Replace the portrait at public/me.png.",
+  "Replace the portrait at public/me-enhanced.png.",
   "Replace the CV at public/resume.pdf.",
   "Paste final GitHub and LinkedIn URLs into socialLinks.",
 ];

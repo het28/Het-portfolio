@@ -35,7 +35,7 @@ Change these values there:
 Add your transparent cutout image:
 
 ```text
-public/me.png
+public/me-enhanced.png
 ```
 
 Add your resume PDF:
