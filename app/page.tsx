@@ -69,7 +69,7 @@ export default function Home() {
       <FloatingBlobs />
       <Navbar />
 
-      <section className="relative flex min-h-screen items-center justify-center px-5 pb-20 pt-28 sm:px-8 lg:px-12">
+      <section className="relative flex min-h-screen items-center justify-center px-5 pb-20 pt-36 sm:px-8 sm:pt-28 lg:px-12">
         <motion.h1
           aria-hidden="true"
           style={{ y: nameY }}
@@ -83,7 +83,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 46, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.95, ease: "easeOut" }}
-          className="glass glass-card hero-device relative z-10 mx-auto min-h-[760px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
+          className="glass glass-card hero-device relative z-10 mx-auto min-h-[820px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
         >
           <div className="silk-bg absolute inset-0" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_35%,rgba(255,255,255,0.16),transparent_18rem),linear-gradient(120deg,rgba(255,255,255,0.14),transparent_38%,rgba(255,255,255,0.06)_64%,transparent)]" />
@@ -102,15 +102,15 @@ export default function Home() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="absolute left-1/2 top-0 h-full w-1/3 -translate-x-1/2 rotate-12 bg-white/10 blur-3xl"
           />
-          <p className="absolute left-1/2 top-12 z-20 w-full -translate-x-1/2 px-4 text-center text-[2.6rem] font-semibold uppercase leading-none tracking-normal text-white/88 sm:top-14 sm:text-[5.7rem] lg:text-[7.8rem]">
+          <p className="absolute left-1/2 top-10 z-20 w-full -translate-x-1/2 px-4 text-center text-[2.8rem] font-semibold uppercase leading-none tracking-normal text-white/88 sm:top-14 sm:text-[5.7rem] lg:text-[7.8rem]">
             Het Darshan Mehta
           </p>
-          <div className="absolute left-4 right-4 bottom-[5.8rem] z-40 rounded-3xl border border-white/12 bg-black/24 p-3 text-center backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:backdrop-blur-0">
+          <div className="absolute left-4 right-4 bottom-[11rem] z-40 rounded-3xl border border-white/18 bg-black/28 p-4 text-center shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:shadow-none sm:backdrop-blur-0">
             <p className="leading-tight text-white">
               <span className="hidden text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/42 sm:block sm:text-xs">
                 Het Darshan Mehta
               </span>
-              <span className="mt-2 block text-xl font-semibold text-white sm:mt-3 sm:text-4xl">
+              <span className="block text-2xl font-semibold text-white sm:mt-3 sm:text-4xl">
                 PhD Researcher
               </span>
               <span className="mt-2 block text-[0.65rem] font-medium uppercase tracking-[0.14em] text-white/56 sm:mt-3 sm:text-xs sm:tracking-[0.18em] sm:text-white/50">
@@ -126,7 +126,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 34, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.95, ease: "easeOut", delay: 0.1 }}
-            className="absolute inset-x-0 bottom-52 z-30 mx-auto flex w-full max-w-[340px] justify-center sm:bottom-0 sm:max-w-[390px] lg:max-w-[420px]"
+            className="absolute inset-x-0 bottom-[17.5rem] z-30 mx-auto flex w-full max-w-[385px] justify-center sm:bottom-0 sm:max-w-[390px] lg:max-w-[420px]"
           >
             <motion.div
               whileHover={{ y: 8, scale: 0.985 }}
@@ -150,7 +150,7 @@ export default function Home() {
               />
             </motion.div>
           </motion.div>
-          <div className="hero-link-bar absolute bottom-6 left-1/2 z-40 flex w-[calc(100%-3rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-3 rounded-full border border-white/14 bg-white/10 p-2 backdrop-blur-2xl shadow-[0_-18px_60px_rgba(255,255,255,0.06)] sm:w-auto">
+          <div className="hero-link-bar absolute bottom-6 left-1/2 z-40 flex w-[calc(100%-3rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-3 rounded-[2rem] border border-white/14 bg-white/10 p-3 backdrop-blur-2xl shadow-[0_-18px_60px_rgba(255,255,255,0.06)] sm:w-auto sm:rounded-full sm:p-2">
             {socialLinks.slice(0, 3).map((item) => {
               const Icon = item.icon;
               const newTab = shouldOpenNewTab(item.href);
