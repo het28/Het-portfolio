@@ -83,7 +83,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 46, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.95, ease: "easeOut" }}
-          className="glass glass-card hero-device relative z-10 mx-auto min-h-[680px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
+          className="glass glass-card hero-device relative z-10 mx-auto min-h-[760px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
         >
           <div className="silk-bg absolute inset-0" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_35%,rgba(255,255,255,0.16),transparent_18rem),linear-gradient(120deg,rgba(255,255,255,0.14),transparent_38%,rgba(255,255,255,0.06)_64%,transparent)]" />
@@ -105,9 +105,9 @@ export default function Home() {
           <p className="absolute left-1/2 top-12 z-20 w-full -translate-x-1/2 px-4 text-center text-[2.6rem] font-semibold uppercase leading-none tracking-normal text-white/88 sm:top-14 sm:text-[5.7rem] lg:text-[7.8rem]">
             Het Darshan Mehta
           </p>
-          <div className="absolute left-4 right-4 top-[8.7rem] z-40 rounded-3xl border border-white/12 bg-black/24 p-4 text-center backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:backdrop-blur-0">
+          <div className="absolute left-4 right-4 bottom-[5.8rem] z-40 rounded-3xl border border-white/12 bg-black/24 p-3 text-center backdrop-blur-2xl sm:left-auto sm:right-10 sm:top-auto sm:bottom-32 sm:max-w-[20rem] sm:border-0 sm:bg-transparent sm:p-0 sm:text-right sm:backdrop-blur-0">
             <p className="leading-tight text-white">
-              <span className="block text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/42 sm:text-xs">
+              <span className="hidden text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/42 sm:block sm:text-xs">
                 Het Darshan Mehta
               </span>
               <span className="mt-2 block text-xl font-semibold text-white sm:mt-3 sm:text-4xl">
@@ -126,7 +126,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 34, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.95, ease: "easeOut", delay: 0.1 }}
-            className="absolute inset-x-0 bottom-0 z-30 mx-auto flex w-full max-w-[285px] justify-center sm:max-w-[390px] lg:max-w-[420px]"
+            className="absolute inset-x-0 bottom-52 z-30 mx-auto flex w-full max-w-[340px] justify-center sm:bottom-0 sm:max-w-[390px] lg:max-w-[420px]"
           >
             <motion.div
               whileHover={{ y: 8, scale: 0.985 }}
@@ -459,16 +459,16 @@ export default function Home() {
 function Navbar() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 px-5 py-4 sm:px-8">
-      <nav className="glass mx-auto flex max-w-7xl items-center justify-between rounded-full px-5 py-3">
+      <nav className="glass mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 rounded-[1.5rem] px-5 py-3 md:flex-nowrap md:rounded-full">
         <a href="#" className="text-sm font-semibold tracking-normal text-white sm:text-base">
           {profile.name}
         </a>
-        <div className="hidden items-center gap-1 text-sm text-white/72 md:flex">
+        <div className="order-3 flex w-full items-center justify-center gap-1 overflow-x-auto text-xs text-white/72 md:order-none md:w-auto md:text-sm">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={assetPath(link.href.replace(/^\//, ""))}
-              className="rounded-full px-3 py-2 transition hover:bg-white/12 hover:text-white"
+              className="shrink-0 rounded-full px-2.5 py-2 transition hover:bg-white/12 hover:text-white md:px-3"
             >
               {link.label}
             </a>
