@@ -71,7 +71,17 @@ export const publications = [
       "A two-phase framework using LLMs to construct and enrich knowledge graphs, then inject semantic embeddings into recommender models.",
     link: "https://link.springer.com/article/10.1007/s44163-026-01404-y",
     citation:
-      "Mehta, H. D., Polignano, M., Semeraro, G., & De Luca, E. W. (2026). Large language model enhanced embeddings for knowledge aware recommender systems. Discover Artificial Intelligence.",
+      "@article{mehta2026,
+author = {Mehta, Darshan and Polignano, Marco and Semeraro, Giovanni and Luca, Ernesto William},
+title = {Large language model enhanced embeddings for knowledge aware recommender systems},
+journal = {Discover Artificial Intelligence},
+year = {2026},
+month = may,
+volume = {6},
+number = {1},
+doi = {10.1007/s44163-026-01404-y},
+url = {https://doi.org/10.1007/s44163-026-01404-y}
+}",
   },
   {
     title: "A Comprehensive Strategy to Bias and Mitigation in Human Resource Decision Systems",
