@@ -421,17 +421,17 @@ export default function Home() {
                 })}
               </div>
             </div>
-            <div className="grid grid-flow-col grid-rows-2 gap-3">
+            <div className="grid min-w-0 grid-flow-col grid-cols-2 grid-rows-2 gap-3">
               {contactCards.map((card) => {
                 const Icon = card.icon;
                 const content = (
                   <>
-                    <Icon className="h-4 w-4 text-cyan-100" />
-                    <span>
+                    <Icon className="h-4 w-4 shrink-0 text-cyan-100" />
+                    <span className="min-w-0">
                       <span className="block text-xs uppercase tracking-[0.16em] text-white/42">
                         {card.label}
                       </span>
-                      <span className="mt-1 block text-sm text-white/74">{card.value}</span>
+                      <span className="mt-1 block break-words text-sm text-white/74">{card.value}</span>
                     </span>
                   </>
                 );

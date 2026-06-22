@@ -208,7 +208,7 @@ export const activityData = {
     { title: "Human-Centered Approaches and Technology (HCAT)", role: "Tutor - October 2024 to February 2025", description: "Supported practical coursework and group projects in human-centered technologies.", link: "" },
   ],
   reviewing: [
-    { title: "Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", description: "Peer reviewer for Data Mining and Knowledge Discovery (DMKD), a Q1 journal.", link: "" },
+    { title: "Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", description: "Peer reviewer for Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery (DMKD), a Q1 journal published by John Wiley & Sons. SJR 2025: 2.556.", link: "" },
   ],
   programCommittees: [
     { title: "RecSys 2026: 20th ACM Conference on Recommender Systems", role: "Program Committee Member - 2026", description: "Program committee service for the 20th ACM Conference on Recommender Systems.", link: "https://recsys.acm.org/recsys26" },
