@@ -18,6 +18,7 @@ import {
   navLinks,
   profile,
   projects,
+  spokenLanguages,
   publications,
   skillGroups,
   socialLinks,
@@ -61,7 +62,7 @@ export default function Home() {
   const imageY = useTransform(scrollY, [0, 760], [0, 42]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-ink text-white">
+    <main className="relative flex min-h-screen flex-col overflow-hidden bg-ink text-white">
       <motion.div
         style={{ scaleX: scrollYProgress }}
         className="fixed left-0 right-0 top-0 z-[70] h-1 origin-left bg-gradient-to-r from-white via-slate-300 to-cyan-100"
@@ -83,7 +84,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 46, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.95, ease: "easeOut" }}
-          className="glass glass-card hero-device relative z-10 mx-auto min-h-[820px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-6 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
+          className="glass glass-card hero-device relative z-10 mx-auto min-h-[720px] w-full max-w-6xl overflow-hidden rounded-[2rem] p-5 sm:min-h-[660px] sm:p-8 lg:min-h-[690px]"
         >
           <div className="silk-bg absolute inset-0" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_35%,rgba(255,255,255,0.16),transparent_18rem),linear-gradient(120deg,rgba(255,255,255,0.14),transparent_38%,rgba(255,255,255,0.06)_64%,transparent)]" />
@@ -210,9 +211,29 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <Section id="research" eyebrow="Selected Work" title="Research & Publications">
+      <Section id="about" eyebrow="About" title="Research Profile" className="order-1 py-10 sm:py-12">
+        <div className="grid max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,1fr)_13rem]">
+          <div className="glass-card theme-card rounded-3xl p-5 sm:p-6">
+            <p className="text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+              I am a Scientific Researcher at the Leibniz Institute for Educational Media | Georg Eckert Institute and a PhD student at Otto von Guericke University Magdeburg.
+              My research focuses on algorithmic fairness, graph neural networks, knowledge-aware recommender systems, and large language models.
+              I work on bias detection and mitigation in multi-group and multi-class settings, particularly for educational media and personalised systems.
+              I also support human-centered AI teaching and contribute to peer review and programme committees.
+            </p>
+          </div>
+          <div aria-hidden="true" className="hero-perspective relative hidden h-52 lg:block">
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute inset-2 rounded-[38%] border border-cyan-100/30" />
+            <motion.div animate={{ rotate: -360, scale: [0.92, 1.05, 0.92] }} transition={{ rotate: { duration: 16, repeat: Infinity, ease: "linear" }, scale: { duration: 5, repeat: Infinity, ease: "easeInOut" } }} className="absolute inset-7 rounded-[45%] border border-white/20 bg-cyan-100/5" />
+            <motion.div animate={{ y: [-9, 9, -9], rotateX: [12, 28, 12] }} transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut" }} className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-[1.75rem] border border-cyan-100/35 bg-gradient-to-br from-cyan-100/35 to-slate-100/5 shadow-[0_24px_50px_rgba(125,211,252,0.24)]" />
+            <motion.span animate={{ x: [-2, 12, -2], y: [7, -10, 7] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-6 top-8 h-3 w-3 rounded-full bg-cyan-100 shadow-[0_0_18px_rgba(165,243,252,0.9)]" />
+            <motion.span animate={{ x: [4, -10, 4], y: [-5, 12, -5] }} transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-8 right-5 h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_18px_rgba(255,255,255,0.8)]" />
+          </div>
+        </div>
+      </Section>
+
+      <Section id="research" eyebrow="Selected Work" title="Research & Publications" className="order-4">
         <div className="grid gap-5 lg:grid-cols-2">
-          {publications.map((paper, index) => (
+          {[...publications].sort((a, b) => a.order - b.order).map((paper, index) => (
             <motion.article
               key={paper.title}
               variants={fadeUp}
@@ -259,7 +280,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="experience" eyebrow="Career" title="Experience">
+      <Section id="experience" eyebrow="Career" title="Experience" className="order-3">
         <div className="relative space-y-4">
           <div className="absolute bottom-8 left-4 top-8 hidden w-px bg-gradient-to-b from-cyan-200/0 via-cyan-200/35 to-violet-200/0 md:block" />
           {experiences.map((item, index) => (
@@ -295,7 +316,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="projects" eyebrow="Applied Systems" title="Projects">
+      <Section id="projects" eyebrow="Applied Systems" title="Projects" className="order-2">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <motion.article
@@ -332,7 +353,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="skills" eyebrow="Technical Depth" title="Skills">
+      <Section id="skills" eyebrow="Technical Depth" title="Skills" className="order-5">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {skillGroups.map((group, groupIndex) => (
             <motion.article
@@ -365,7 +386,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="education" eyebrow="Academic Path" title="Education">
+      <Section id="education" eyebrow="Academic Path" title="Education" className="order-6">
         <div className="grid gap-5 md:grid-cols-2">
           {education.map((item, index) => (
             <motion.article
@@ -386,7 +407,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="contact" eyebrow="Contact" title="Let's Connect">
+      <Section id="contact" eyebrow="Contact" title="Let's Connect" className="order-7">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -420,8 +441,14 @@ export default function Home() {
                   );
                 })}
               </div>
+              <div className="mt-6">
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/42">Languages Spoken</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {spokenLanguages.map((language) => <span key={language} className="rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-xs text-white/78">{language}</span>)}
+                </div>
+              </div>
             </div>
-            <div className="grid min-w-0 grid-flow-col grid-cols-2 grid-rows-2 gap-3">
+            <div className="grid min-w-0 grid-flow-col grid-cols-2 grid-rows-2 gap-2 sm:gap-3">
               {contactCards.map((card) => {
                 const Icon = card.icon;
                 const content = (
@@ -442,14 +469,14 @@ export default function Home() {
                     href={linkPath(card)}
                     target={shouldOpenNewTabItem(card) ? "_blank" : undefined}
                     rel={shouldOpenNewTabItem(card) ? "noreferrer" : undefined}
-                    className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/10 p-4 transition hover:border-cyan-200/55 hover:bg-white/16"
+                    className="flex min-w-0 items-center gap-2 rounded-2xl border border-white/12 bg-white/10 p-3 sm:gap-3 sm:p-4 transition hover:border-cyan-200/55 hover:bg-white/16"
                   >
                     {content}
                   </a>
                 ) : (
                   <div
                     key={card.label}
-                    className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/10 p-4"
+                    className="flex min-w-0 items-center gap-2 rounded-2xl border border-white/12 bg-white/10 p-3 sm:gap-3 sm:p-4"
                   >
                     {content}
                   </div>
@@ -502,14 +529,16 @@ function Section({
   eyebrow,
   title,
   children,
+  className = "",
 }: {
   id: string;
   eyebrow: string;
   title: string;
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <section id={id} className="relative z-10 px-5 py-20 sm:px-8 lg:px-12">
+    <section id={id} className={`relative z-10 px-5 py-14 sm:px-8 sm:py-20 lg:px-12 ${className}`}>
       <motion.div
         initial={{ opacity: 0.82, y: 36, scale: 0.985 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}

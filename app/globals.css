@@ -52,6 +52,7 @@ body::after {
   content: "";
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1), transparent 64%);
   filter: blur(18px);
+  animation: background-breathe 14s ease-in-out infinite;
 }
 
 ::selection {
@@ -211,6 +212,11 @@ body::after {
   100% {
     transform: translate3d(-1%, 4%, 0) rotate(-2deg) scale(1.02);
   }
+}
+
+@keyframes background-breathe {
+  0%, 100% { opacity: 0.38; transform: scale(0.94) translateY(1rem); }
+  50% { opacity: 0.78; transform: scale(1.08) translateY(-1rem); }
 }
 
 @media (max-width: 767px) {

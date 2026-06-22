@@ -4,17 +4,36 @@ import { motion } from "framer-motion";
 import { publications } from "../portfolio-data";
 import { CardLink, CitationButton, FloatingBlobs, PageIntro, SiteNav } from "../shared";
 
+const myPublications = [...publications]
+  .filter((paper) => paper.section !== "student-supervision")
+  .sort((a, b) => a.order - b.order);
+const studentSupervisionPublications = publications.filter((paper) => paper.section === "student-supervision");
+
 export default function PublicationsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />
       <SiteNav />
-      <PageIntro eyebrow="Publications" title="Selected Research Work">
+      <PageIntro eyebrow="Publications" title="My Publications">
         <p>Journal publications in recommender systems, knowledge graphs, fairness, and AI for education.</p>
       </PageIntro>
       <section className="relative z-10 px-5 py-12 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
-          {publications.map((paper, index) => (
+        <div className="mx-auto max-w-7xl space-y-14">
+          <PublicationGrid publications={myPublications} />
+          <section>
+            <h2 className="mb-5 text-2xl font-semibold text-white">Student Supervision Publication</h2>
+            <PublicationGrid publications={studentSupervisionPublications} />
+          </section>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function PublicationGrid({ publications: papers }: { publications: typeof publications }) {
+  return (
+    <div className="grid gap-5 lg:grid-cols-2">
+      {papers.map((paper, index) => (
             <motion.article
               key={paper.title}
               initial={{ opacity: 0, y: 28 }}
@@ -38,9 +57,7 @@ export default function PublicationsPage() {
               {paper.link ? <CardLink href={paper.link}>Open Publication</CardLink> : null}
               <CitationButton citation={paper.citation} />
             </motion.article>
-          ))}
-        </div>
-      </section>
-    </main>
+      ))}
+    </div>
   );
 }

@@ -47,11 +47,11 @@ export function SiteCursor() {
 export function SiteNav() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 px-5 py-4 sm:px-8">
-      <nav className="glass mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 rounded-[1.5rem] px-5 py-3 md:flex-nowrap md:rounded-full">
+      <nav className="glass mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 rounded-[1.5rem] px-4 py-3 sm:px-5 md:flex-nowrap md:rounded-full">
         <a href={assetPath("") || "/"} className="text-sm font-semibold tracking-normal text-white sm:text-base">
           {profile.name}
         </a>
-        <div className="order-3 flex w-full items-center justify-center gap-1 overflow-x-auto text-xs text-white/72 md:order-none md:w-auto md:text-sm">
+        <div className="order-3 flex w-full items-center justify-center gap-1 overflow-x-auto whitespace-nowrap text-xs text-white/72 md:order-none md:w-auto md:text-sm">
           {navLinks.map((link) => (
             <a
               key={link.href}
