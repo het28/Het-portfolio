@@ -79,7 +79,7 @@ body::after {
     0 8px 26px rgba(255, 255, 255, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(34px) saturate(165%);
+  backdrop-filter: blur(16px) saturate(130%);
 }
 
 .glass-card {
@@ -167,7 +167,14 @@ body::after {
   box-shadow:
     0 26px 90px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(28px) saturate(145%);
+  backdrop-filter: blur(14px) saturate(125%);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass,
+  .theme-card {
+    background: rgba(10, 14, 24, 0.94);
+  }
 }
 
 .silk-bg {
@@ -235,5 +242,32 @@ body::after {
   .theme-card a {
     max-width: 100%;
     white-space: normal;
+  }
+}
+
+@media (max-width: 1024px), (prefers-reduced-motion: reduce) {
+  .glass,
+  .theme-card {
+    backdrop-filter: blur(8px);
+  }
+
+  .silk-bg::before,
+  .silk-bg::after {
+    animation: none;
+  }
+
+  .custom-cursor,
+  .custom-cursor-glow {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }

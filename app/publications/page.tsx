@@ -15,7 +15,7 @@ export default function PublicationsPage() {
       <FloatingBlobs />
       <SiteNav />
       <PageIntro eyebrow="Publications" title="My Publications">
-        <p>Journal publications in recommender systems, knowledge graphs, fairness, and AI for education.</p>
+        <p>Scientific publications in recommender systems, algorithmic fairness, and AI for education.</p>
       </PageIntro>
       <section className="relative z-10 px-5 py-12 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl space-y-14">

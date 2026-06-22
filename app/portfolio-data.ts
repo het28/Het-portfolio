@@ -19,10 +19,10 @@ export const profile = {
   name: "Het Darshan Mehta",
   heroName: "HET MEHTA",
   role: "PhD Student | Scientific Researcher | AI Researcher",
-  tagline: "AI Research | Recommender Systems | Knowledge Graphs",
+  tagline: "AI Research | Algorithmic Fairness & Bias Detection | Recommender Systems",
   headline: "AI researcher and scientific researcher.",
   summary:
-    "Scientific Researcher at the Leibniz Institute for Educational Media | Georg Eckert Institute and PhD student at Otto-von-Guericke University, working on algorithmic fairness, graph neural networks, recommender systems, and LLM-enhanced knowledge graphs.",
+    "Scientific Researcher at the Leibniz Institute for Educational Media | Georg Eckert Institute and PhD student at Otto-von-Guericke University, working on algorithmic fairness, bias detection, graph neural networks, recommender systems, and large language models.",
   availability:
     "Focused on AI fairness, human-centered AI, educational technology, and trustworthy recommender systems.",
   imagePath: "me-enhanced.png",
@@ -358,11 +358,15 @@ export const skillGroups = [
   },
   {
     title: "Frameworks & Developer Tools",
-    skills: ["Docker", "LangChain", "Neo4j", "Ollama", "CoppeliaSim", "OpenAI API"],
+    skills: ["ClayRS", "Elliot", "Docker", "LangChain", "Neo4j", "Ollama", "CoppeliaSim", "OpenAI API"],
   },
   {
     title: "Libraries & APIs",
-    skills: ["Sentence-Transformers", "Transformers", "scikit-learn", "pandas", "NumPy", "Matplotlib", "Seaborn", "Together AI APIs"],
+    skills: ["MMRec", "RecBole", "fastFM", "Sentence-Transformers", "Transformers", "scikit-learn", "pandas", "NumPy", "Matplotlib", "Seaborn", "Together AI APIs"],
+  },
+  {
+    title: "Public Datasets",
+    skills: ["MovieLens", "DBbooks", "LastFM"],
   },
 ];
 

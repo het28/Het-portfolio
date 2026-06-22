@@ -216,9 +216,9 @@ export default function Home() {
           <div className="glass-card theme-card rounded-3xl p-5 sm:p-6">
             <p className="text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
               I am a Scientific Researcher at the Leibniz Institute for Educational Media | Georg Eckert Institute and a PhD student at Otto von Guericke University Magdeburg.
-              My research focuses on algorithmic fairness, graph neural networks, knowledge-aware recommender systems, and large language models.
-              I work on bias detection and mitigation in multi-group and multi-class settings, particularly for educational media and personalised systems.
-              I also support human-centered AI teaching and contribute to peer review and programme committees.
+              My current work focuses on measuring and evaluating algorithmic fairness in graph neural networks, as well as developing fairness-aware models for bias detection in educational textbooks.
+              My doctoral research examines multi-group and multi-class fairness for knowledge-aware recommender systems.
+              I have also supported teaching in Human-Centered Artificial Intelligence, Human-Centered Natural Language Processing, and Human-Centered Approaches and Technology.
             </p>
           </div>
           <div aria-hidden="true" className="hero-perspective relative hidden h-52 lg:block">
@@ -231,7 +231,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="research" eyebrow="Selected Work" title="Research & Publications" className="order-4">
+      <Section id="research" eyebrow="Selected Work" title="Research & Scientific Publications" className="order-4">
         <div className="grid gap-5 lg:grid-cols-2">
           {[...publications].sort((a, b) => a.order - b.order).map((paper, index) => (
             <motion.article
@@ -247,7 +247,7 @@ export default function Home() {
               <div className="mb-5 flex items-center gap-3 text-cyan-100">
                 <BookOpen className="h-5 w-5" />
                 <span className="text-xs font-medium uppercase tracking-[0.18em] text-cyan-100/70">
-                  Publication
+                  Scientific Publication
                 </span>
               </div>
               <h3 className="text-xl font-semibold leading-8 text-white">{paper.title}</h3>
