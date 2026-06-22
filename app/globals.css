@@ -84,6 +84,8 @@ body::after {
 .glass-card {
   position: relative;
   overflow: hidden;
+  border-radius: 1.5rem;
+  isolation: isolate;
 }
 
 .glass-card::before {
@@ -113,12 +115,20 @@ body::after {
   text-wrap: balance;
 }
 
+.theme-card h2,
+.theme-card h3,
+.theme-card p {
+  overflow-wrap: anywhere;
+}
+
 .hero-perspective {
   perspective: 1500px;
   transform-style: preserve-3d;
 }
 
 .portrait-polish {
+  border-radius: 2rem 2rem 1.25rem 1.25rem;
+  clip-path: inset(0 round 2rem 2rem 1.25rem 1.25rem);
   filter: contrast(1.08) saturate(1.04) brightness(1.04);
   image-rendering: auto;
 }
@@ -206,5 +216,18 @@ body::after {
 @media (max-width: 767px) {
   .hero-perspective {
     perspective: none;
+  }
+
+  .hero-link-bar {
+    gap: 0.15rem;
+  }
+
+  .theme-card {
+    min-width: 0;
+  }
+
+  .theme-card a {
+    max-width: 100%;
+    white-space: normal;
   }
 }

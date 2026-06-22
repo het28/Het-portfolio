@@ -230,8 +230,16 @@ export default function Home() {
                 </span>
               </div>
               <h3 className="text-xl font-semibold leading-8 text-white">{paper.title}</h3>
+              <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-white/42">{paper.publicationType}</p>
               <p className="mt-3 text-sm font-medium text-cyan-100/80">{paper.venue}</p>
-              <p className="mt-4 text-sm leading-7 text-white/66">{paper.description}</p>
+              <p className="mt-4 text-sm leading-7 text-white/72">
+                {paper.authors.map((author, authorIndex) => (
+                  <span key={author}>
+                    {authorIndex > 0 ? ", " : ""}
+                    {author === "Het Darshan Mehta" ? <strong className="underline decoration-cyan-200 decoration-2 underline-offset-4">{author}</strong> : author}
+                  </span>
+                ))}
+              </p>
               {paper.link ? (
                 <a
                   href={paper.link}
@@ -413,7 +421,7 @@ export default function Home() {
                 })}
               </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid grid-flow-col grid-rows-2 gap-3">
               {contactCards.map((card) => {
                 const Icon = card.icon;
                 const content = (
@@ -478,10 +486,11 @@ function Navbar() {
           href={assetPath(profile.resumePath)}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
+          title="Open CV in a new tab"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
         >
           CV
-          <ExternalLink className="h-3.5 w-3.5" />
+          <ExternalLink className="h-3.5 w-3.5 opacity-55 transition group-hover:opacity-100" />
         </a>
       </nav>
     </header>

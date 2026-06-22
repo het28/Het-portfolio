@@ -66,10 +66,11 @@ export function SiteNav() {
           href={assetPath(profile.resumePath)}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
+          title="Open CV in a new tab"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-sm text-white/78 transition hover:border-cyan-200/55 hover:text-white"
         >
           CV
-          <ExternalLink className="h-3.5 w-3.5" />
+          <ExternalLink className="h-3.5 w-3.5 opacity-55 transition group-hover:opacity-100" />
         </a>
       </nav>
     </header>
@@ -194,7 +195,7 @@ export function CitationButton({ citation }: { citation?: string }) {
           animate={{ opacity: 1, y: 0, height: "auto" }}
           className="mt-4 rounded-2xl border border-white/14 bg-black/45 p-4 text-sm leading-6 text-white/72 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
         >
-          <p>{citation}</p>
+          <p className="whitespace-pre-wrap break-words font-mono text-xs">{citation}</p>
           <button
             type="button"
             onClick={copyCitation}

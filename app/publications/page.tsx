@@ -10,7 +10,7 @@ export default function PublicationsPage() {
       <FloatingBlobs />
       <SiteNav />
       <PageIntro eyebrow="Publications" title="Selected Research Work">
-        <p>Publications and workshop papers across recommender systems, knowledge graphs, fairness, and AI for education.</p>
+        <p>Journal publications in recommender systems, knowledge graphs, fairness, and AI for education.</p>
       </PageIntro>
       <section className="relative z-10 px-5 py-12 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
@@ -23,10 +23,19 @@ export default function PublicationsPage() {
               transition={{ duration: 0.55, delay: index * 0.04 }}
               className="glass-card theme-card rounded-3xl p-6"
             >
-              <p className="text-sm uppercase tracking-[0.18em] text-white/42">{paper.venue}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-white/42">{paper.publicationType}</p>
               <h2 className="mt-3 text-xl font-semibold leading-8 text-white">{paper.title}</h2>
-              <p className="mt-4 text-sm leading-7 text-white/62">{paper.description}</p>
-              <CardLink href={paper.link}>Open Publication</CardLink>
+              <p className="mt-3 text-sm font-medium text-cyan-100/80">{paper.venue}</p>
+              <p className="mt-4 text-sm leading-7 text-white/72">
+                {paper.authors.map((author, authorIndex) => (
+                  <span key={author}>
+                    {authorIndex > 0 ? ", " : ""}
+                    {author === "Het Darshan Mehta" ? <strong className="underline decoration-cyan-200 decoration-2 underline-offset-4">{author}</strong> : author}
+                  </span>
+                ))}
+              </p>
+              {paper.doi ? <p className="mt-3 text-sm text-white/48">DOI: {paper.doi}</p> : null}
+              {paper.link ? <CardLink href={paper.link}>Open Publication</CardLink> : null}
               <CitationButton citation={paper.citation} />
             </motion.article>
           ))}

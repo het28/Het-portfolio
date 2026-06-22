@@ -11,6 +11,10 @@ import {
   Sparkles,
 } from "lucide-react";
 
+// SITE CONTENT FILE
+// Update profile details, publications, activities, and projects here.
+// External links automatically open in a new tab throughout the site.
+
 export const profile = {
   name: "Het Darshan Mehta",
   heroName: "HET MEHTA",
@@ -66,86 +70,153 @@ export const highlights = [
 export const publications = [
   {
     title: "Large language model enhanced embeddings for knowledge aware recommender systems",
+    authors: ["Het Darshan Mehta", "Marco Polignano", "Giovanni Semeraro", "Ernesto William De Luca"],
+    publicationType: "Journal Article",
     venue: "Discover Artificial Intelligence, Springer Nature, 2026",
-    description:
-      "A two-phase framework using LLMs to construct and enrich knowledge graphs, then inject semantic embeddings into recommender models.",
-    link: "https://link.springer.com/article/10.1007/s44163-026-01404-y",
-    citation:
-      "@article{mehta2026,
-author = {Mehta, Darshan and Polignano, Marco and Semeraro, Giovanni and Luca, Ernesto William},
-title = {Large language model enhanced embeddings for knowledge aware recommender systems},
-journal = {Discover Artificial Intelligence},
-year = {2026},
-month = may,
-volume = {6},
-number = {1},
-doi = {10.1007/s44163-026-01404-y},
-url = {https://doi.org/10.1007/s44163-026-01404-y}
-}",
-  },
-  {
-    title: "A Comprehensive Strategy to Bias and Mitigation in Human Resource Decision Systems",
-    venue: "XAI.it 2024, co-located with AIxIA 2024",
-    description:
-      "Study of bias sources, fairness definitions, mitigation strategies, and trade-offs in automated HR decision systems.",
-    link: "https://hdl.handle.net/11586/550741",
-    citation:
-      "D'Amicantonio, S., Kizhakkam Kulangara, M., Mehta, H. D., Pal, S., Levantesi, M., Polignano, M., Purificato, E., & De Luca, E. W. (2024). A comprehensive strategy to bias and mitigation in human resource decision systems. XAI.it 2024.",
+    link: "https://doi.org/10.1007/s44163-026-01404-y",
+    doi: "10.1007/s44163-026-01404-y",
+    citation: "@article{Mehta2026Large,\n  author = {Mehta, Het Darshan and Polignano, Marco and Semeraro, Giovanni and De Luca, Ernesto William},\n  title = {Large language model enhanced embeddings for knowledge aware recommender systems},\n  journal = {Discover Artificial Intelligence},\n  year = {2026},\n  volume = {6},\n  number = {1},\n  pages = {477},\n  doi = {10.1007/s44163-026-01404-y},\n  url = {https://doi.org/10.1007/s44163-026-01404-y}\n}",
   },
   {
     title: "When Multimodal Features Do Not Improve Fairness in Learning Systems",
-    venue: "MAAI4AIED, Festival of Learning 2026",
-    description:
-      "Research on fairness behavior in learning systems when multimodal features are introduced.",
-    citation:
-      "Mehta, H. D., & De Luca, E. W. (2026). When multimodal features do not improve fairness in learning systems. MAAI4AIED, Festival of Learning 2026.",
+    authors: ["Het Darshan Mehta", "Ernesto William De Luca"],
+    publicationType: "Conference Workshop Paper",
+    venue: "MAAI4AIED - Multimodal Affect in AI for Education Design, Application, and Ethical Implications, Festival of Learning 2026",
+    citation: "Mehta, H. D., & De Luca, E. W. (2026). When multimodal features do not improve fairness in learning systems. MAAI4AIED - Multimodal Affect in AI for Education Design, Application, and Ethical Implications, Festival of Learning 2026.",
   },
   {
     title: "A Comprehensive Evaluation Framework for Multi-Level Bias Analysis in Graph-Based Personalization Systems",
-    venue: "ACM UMAP 2026 Workshop",
-    description:
-      "Framework for analyzing multi-level bias in graph-based personalization and recommender systems.",
-    citation:
-      "Ahire, H., Correia, G. R., Sherwani, P., Mehta, H. D., Polignano, M., Semeraro, G., & De Luca, E. W. (2026). A comprehensive evaluation framework for multi-level bias analysis in graph-based personalization systems. ACM UMAP Workshop.",
+    authors: ["Hrushikesh Ahire", "Gavin Rony Correia", "Pinky Sherwani", "Het Darshan Mehta", "Marco Polignano", "Giovanni Semeraro", "Ernesto William De Luca"],
+    publicationType: "Workshop Paper",
+    venue: "8th International Workshop on Explainable User Modeling and Personalised Systems, co-located with UMAP 2026, Gothenburg, Sweden",
+    link: "https://ceur-ws.org/Vol-4206/ExUM-4.pdf",
+    citation: "@inproceedings{ahire2026comprehensive,\n  title = {A Comprehensive Evaluation Framework for Multi-Level Bias Analysis in Graph-Based Personalization Systems},\n  author = {Ahire, Hrushikesh and Correia, Gavin Rony and Sherwani, Pinky and Mehta, Het Darshan and Polignano, Marco and Semeraro, Giovanni and De Luca, Ernesto William},\n  year = {2026}\n}",
+  },
+  {
+    title: "A Comprehensive Strategy to Bias and Mitigation in Human Resource Decision Systems",
+    authors: ["Silvia D'Amicantonio", "Mishal Kizhakkam Kulangara", "Het Darshan Mehta", "Shalini Pal", "Marco Levantesi", "Marco Polignano", "Erasmo Purificato", "Ernesto William De Luca"],
+    publicationType: "Workshop Paper",
+    venue: "5th Italian Workshop on Explainable Artificial Intelligence, co-located with AIxIA 2024, Bolzano, Italy",
+    link: "https://ricerca.uniba.it/handle/11586/550741",
+    citation: "@inproceedings{d2024comprehensive,\n  title = {A comprehensive strategy to bias and mitigation in human resource decision systems},\n  author = {D’Amicantonio, Silvia and Kulangara, Mishal Kizhakkam and Mehta, Het Darshan and Pal, Shalini and Levantesi, Marco and Polignano, Marco and Purificato, Erasmo and De Luca, Ernesto William and others},\n  booktitle = {CEUR Workshop Proceedings},\n  year = {2024}\n}",
   },
 ];
 
 export const activities = {
   intro:
-    "Academic activities, research engagement, teaching support, and workshop participation. Edit this section in app/portfolio-data.ts as Het adds chairing, committee, or reviewer roles.",
-  chairing: [
+    "Teaching and peer-review activities.",
+  teaching: [
     {
-      title: "Academic Workshop Participation",
-      role: "Research contributor",
-      description:
-        "Participated through accepted and submitted research work in AI, recommender systems, fairness, and educational technology venues.",
-      link: "",
-    },
-  ],
-  committees: [
-    {
-      title: "Human-Centered AI Teaching Support",
-      role: "Tutor",
-      description:
-        "Supported Human-Centered AI, Human-Centered NLP, and Human-Centered Approaches and Technology courses at Otto-von-Guericke University.",
+      title: "Human-Centered Artificial Intelligence",
+      role: "Teaching Assistant · Summer Semester 2024 – Present",
+      description: "Teaching support for the Human-Centered Artificial Intelligence course at Otto von Guericke University Magdeburg.",
       link: "",
     },
     {
-      title: "Educational Media Research",
-      role: "Scientific researcher",
-      description:
-        "Contributes to research on bias detection, graph neural networks, and fairness-aware AI for educational media.",
-      link: "https://www.hcai.ovgu.de/Staff/GEI/Het%2BDarshan%2BMehta.html",
+      title: "Human-Centered Approaches and Technologies",
+      role: "Teaching Assistant · Summer Semester 2024 – Present",
+      description: "Teaching support for the Human-Centered Approaches and Technologies course at Otto von Guericke University Magdeburg.",
+      link: "",
+    },
+    {
+      title: "Human-Centered Natural Language Processing (HCNLP)",
+      role: "Tutor - October 2025 to January 2026",
+      description: "Tutor at Otto von Guericke University Magdeburg.",
+      link: "",
+    },
+    {
+      title: "Human-Centered Approaches and Technology (HCAT)",
+      role: "Tutor - October 2025 to January 2026",
+      description: "Tutor at Otto von Guericke University Magdeburg.",
+      link: "",
+    },
+    {
+      title: "Human-Centered Artificial Intelligence (HCAI)",
+      role: "Tutor - April 2025 to September 2025",
+      description: "Tutor at Otto von Guericke University Magdeburg.",
+      link: "",
+    },
+    {
+      title: "Human-Centered Natural Language Processing (HCNLP)",
+      role: "Tutor - November 2024 to May 2025",
+      description: "Tutor at Otto von Guericke University Magdeburg.",
+      link: "",
+    },
+    {
+      title: "Human-Centered Approaches and Technology (HCAT)",
+      role: "Tutor - October 2024 to February 2025",
+      description: "Tutor at Otto von Guericke University Magdeburg.",
+      link: "",
     },
   ],
   reviewing: [
     {
-      title: "Reviewer Roles",
-      role: "To be updated",
-      description:
-        "Add confirmed journal, conference, or workshop reviewer roles here when available.",
+      title: "Data Mining and Knowledge Discovery",
+      role: "Journal Reviewer",
+      description: "Peer reviewer for Data Mining and Knowledge Discovery (DMKD).",
       link: "",
     },
+  ],
+  programCommittees: [
+    {
+      title: "RecSys 2026: 20th ACM Conference on Recommender Systems",
+      role: "Program Committee Member",
+      description: "Program committee service for the 20th ACM Conference on Recommender Systems.",
+      link: "https://recsys.acm.org/recsys26",
+    },
+    {
+      title: "WWW 2026: The ACM Web Conference 2026",
+      role: "Program Committee Member",
+      description: "Program committee service for The ACM Web Conference 2026.",
+      link: "https://www2026.thewebconf.org/",
+    },
+    {
+      title: "CIKM'26: The 35th ACM International Conference on Information and Knowledge Management",
+      role: "Program Committee Member",
+      description: "Program committee service for the 35th ACM International Conference on Information and Knowledge Management.",
+      link: "https://cikm2026.org/",
+    },
+    {
+      title: "UMAP 2026: 34th ACM International Conference on User Modeling, Adaptation and Personalization",
+      role: "Program Committee Member",
+      description: "Program committee service for the 34th ACM International Conference on User Modeling, Adaptation and Personalization.",
+      link: "https://www.um.org/umap2026/",
+    },
+    {
+      title: "XAI.it 2026: 6th Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight",
+      role: "Program Committee Member",
+      description: "Program committee service for the XAI.it 2026 workshop.",
+      link: "https://xai-it.github.io/",
+    },
+    {
+      title: "AIED 2026: 27th International Conference on Artificial Intelligence in Education",
+      role: "Program Committee Member",
+      description: "Program committee service for the 27th International Conference on Artificial Intelligence in Education.",
+      link: "https://aied-conference.com/2026",
+    },
+  ],
+};
+
+// Current activity data, ordered newest to oldest. Keep future additions in this block.
+export const activityData = {
+  intro: "Teaching, peer-review, and programme-committee activities.",
+  teaching: [
+    { title: "Human-Centered Natural Language Processing (HCNLP)", role: "Tutor - October 2025 to January 2026", description: "Supported students in applying natural-language-processing methods within a human-centered AI perspective.", link: "" },
+    { title: "Human-Centered Approaches and Technology (HCAT)", role: "Tutor - October 2025 to January 2026", description: "Supported practical coursework and student projects on human-centered approaches and technologies.", link: "" },
+    { title: "Human-Centered Artificial Intelligence (HCAI)", role: "Tutor - April 2025 to September 2025", description: "Supported exercise sessions and group projects on HCAI principles, Responsible AI, algorithmic fairness, and AI ethics.", link: "" },
+    { title: "Human-Centered Natural Language Processing (HCNLP)", role: "Tutor - November 2024 to May 2025", description: "Supported students with practical exercises and project work in human-centered natural language processing.", link: "" },
+    { title: "Human-Centered Approaches and Technology (HCAT)", role: "Tutor - October 2024 to February 2025", description: "Supported practical coursework and group projects in human-centered technologies.", link: "" },
+  ],
+  reviewing: [
+    { title: "Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", description: "Peer reviewer for Data Mining and Knowledge Discovery (DMKD), a Q1 journal.", link: "" },
+  ],
+  programCommittees: [
+    { title: "RecSys 2026: 20th ACM Conference on Recommender Systems", role: "Program Committee Member - 2026", description: "Program committee service for the 20th ACM Conference on Recommender Systems.", link: "https://recsys.acm.org/recsys26" },
+    { title: "WWW 2026: The ACM Web Conference 2026", role: "Program Committee Member - 2026", description: "Program committee service for The ACM Web Conference 2026.", link: "https://www2026.thewebconf.org/" },
+    { title: "CIKM'26: The 35th ACM International Conference on Information and Knowledge Management", role: "Program Committee Member - 2026", description: "Program committee service for the 35th ACM International Conference on Information and Knowledge Management.", link: "https://cikm2026.org/" },
+    { title: "UMAP 2026: 34th ACM International Conference on User Modeling, Adaptation and Personalization", role: "Program Committee Member - 2026", description: "Program committee service for the 34th ACM International Conference on User Modeling, Adaptation and Personalization.", link: "https://www.um.org/umap2026/" },
+    { title: "XAI.it 2026: 6th Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight", role: "Program Committee Member - 2026", description: "Program committee service for the XAI.it 2026 workshop.", link: "https://xai-it.github.io/" },
+    { title: "AIED 2026: 27th International Conference on Artificial Intelligence in Education", role: "Program Committee Member - 2026", description: "Program committee service for the 27th International Conference on Artificial Intelligence in Education.", link: "https://aied-conference.com/2026" },
   ],
 };
 
@@ -227,46 +298,52 @@ export const education = [
   },
 ];
 
-export const projects = [
+export const pinnedProjects = [
   {
-    title: "EUI LLM-KARS",
+    title: "MEG-RW",
     description:
-      "Enhanced user and item embeddings using LLM-generated knowledge graphs for knowledge-aware recommender systems.",
-    tech: "LLMs | Knowledge Graphs | Recommender Systems",
-    link: "https://link.springer.com/article/10.1007/s44163-026-01404-y",
+      "Multi-Group Exposure calibrated Graph Reweighting for Fairness in Recommendation.",
+    tech: "Python | Fairness | Recommender Systems",
+    link: "https://github.com/het28/MEG-RW",
   },
   {
-    title: "Algorithmic Fairness in GNNs",
+    title: "MMRec-FAIR",
     description:
-      "Evaluated GIN, GAT, and GCN fairness on adult graph data and implemented mitigation techniques.",
-    tech: "GNNs | Fairness Metrics | Bias Mitigation",
+      "Fairness in multimodal recommender systems.",
+    tech: "Python | Multimodal Recommendation | Fairness",
+    link: "https://github.com/het28/MMRec-FAIR",
   },
   {
-    title: "OttoBot",
+    title: "EUI_LLM_KARS",
     description:
-      "Transformer-based university information chatbot using web crawling, RAG, LangChain, and open-source LLM tooling.",
-    tech: "NLP | RAG | LangChain | Transformers",
-    link: "https://ghoshtathagata.de/project/OTTOBoT.pdf",
+      "Knowledge-aware recommender system combining knowledge graph embeddings and large language models.",
+    tech: "Python | LLMs | Knowledge Graphs",
+    link: "https://github.com/het28/EUI_LLM_KARS",
   },
   {
-    title: "Deep Reinforcement Learning Traffic System",
+    title: "LLM-KG-Extraction",
     description:
-      "Implemented Advantage Actor Critic models to optimize traffic control in simulation environments.",
-    tech: "A2C | A3C | Simulation",
+      "Pipeline for extracting and evaluating knowledge graphs from the MovieLens 1M dataset with large language models.",
+    tech: "Python | LLMs | Knowledge Graphs",
+    link: "https://github.com/het28/LLM-KG-Extraction",
   },
   {
-    title: "Real-time Sign Language Translator",
+    title: "Deep-Reinforcement-Learning-A2C-",
     description:
-      "Used webcam input and CNNs to recognize hand gestures and convert them into speech-enabled text.",
-    tech: "CNNs | Computer Vision | Accessibility",
+      "An implementation of Advantage Actor Critic (A2C) reinforcement learning.",
+    tech: "Python | Reinforcement Learning | A2C",
+    link: "https://github.com/het28/Deep-Reinforcement-Learning-A2C-",
   },
   {
-    title: "AnyLogic Traffic Simulation",
+    title: "Evaluating-Algorithmic-Fairness-in-GNNs",
     description:
-      "Collaborated with the City of Magdeburg on agent-based modeling for intersection safety.",
-    tech: "AnyLogic | Agent-Based Modeling",
+      "Evaluation of algorithmic fairness in graph neural networks using the Adult dataset and mitigation strategies.",
+    tech: "Jupyter Notebook | GNNs | Fairness",
+    link: "https://github.com/het28/Evaluating-Algorithmic-Fairness-in-GNNs",
   },
 ];
+
+export const projects = pinnedProjects;
 
 export const skillGroups = [
   {
@@ -298,18 +375,23 @@ export const skillGroups = [
 export const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/your-username",
+    href: "https://github.com/het28",
     icon: Github,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/your-profile",
+    href: "https://www.linkedin.com/in/het-mehta2801/",
     icon: Linkedin,
   },
   {
     label: "Email",
     href: `mailto:${profile.email}`,
     icon: Mail,
+  },
+  {
+    label: "Google Scholar",
+    href: "https://scholar.google.com/scholar?q=%22Het+Darshan+Mehta%22",
+    icon: GraduationCap,
   },
   {
     label: "HCAI Profile",
@@ -321,6 +403,7 @@ export const socialLinks = [
 export const contactCards = [
   { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
   { label: "Phone", value: profile.phone, href: `tel:${profile.phone.replaceAll(" ", "")}`, icon: Phone },
+  { label: "ORCID", value: "0009-0000-8372-3877", href: "https://orcid.org/0009-0000-8372-3877", icon: BookOpen },
   { label: "Location", value: profile.location, href: "", icon: MapPin },
 ];
 

@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { activities } from "../portfolio-data";
+import { activityData as activities } from "../portfolio-data";
 import { CardLink, FloatingBlobs, PageIntro, SiteNav } from "../shared";
 
 const groups = [
-  { title: "Chairing", items: activities.chairing },
-  { title: "Organizing Committees", items: activities.committees },
+  { title: "Teaching", items: activities.teaching },
   { title: "Reviewer for Journals", items: activities.reviewing },
+  { title: "Program Committees", items: activities.programCommittees },
 ];
 
 export default function ActivitiesPage() {
@@ -15,7 +15,7 @@ export default function ActivitiesPage() {
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />
       <SiteNav />
-      <PageIntro eyebrow="Activities" title="Chairing and Committees">
+      <PageIntro eyebrow="Activities" title="Teaching and Reviewing">
         <p>{activities.intro}</p>
       </PageIntro>
       <section className="relative z-10 px-5 py-12 sm:px-8 lg:px-12">
@@ -36,7 +36,7 @@ export default function ActivitiesPage() {
                     <p className="text-sm uppercase tracking-[0.18em] text-white/42">{item.role}</p>
                     <h3 className="mt-3 text-xl font-semibold text-white">{item.title}</h3>
                     <p className="mt-4 text-sm leading-7 text-white/62">{item.description}</p>
-                    <CardLink href={item.link}>Open Activity</CardLink>
+                    {item.link ? <CardLink href={item.link}>Open Activity</CardLink> : null}
                   </motion.article>
                 ))}
               </div>
