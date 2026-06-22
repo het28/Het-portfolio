@@ -87,6 +87,8 @@ body::after {
   overflow: hidden;
   border-radius: 1.5rem;
   isolation: isolate;
+  clip-path: inset(0 round 1.5rem);
+  transform: translateZ(0);
 }
 
 .glass-card::before {
@@ -94,6 +96,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   content: "";
+  border-radius: inherit;
   background:
     radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.18), transparent 18rem),
     linear-gradient(
@@ -130,6 +133,8 @@ body::after {
 .portrait-polish {
   border-radius: 2rem 2rem 1.25rem 1.25rem;
   clip-path: inset(0 round 2rem 2rem 1.25rem 1.25rem);
+  overflow: hidden;
+  transform: translateZ(0);
   filter: contrast(1.08) saturate(1.04) brightness(1.04);
   image-rendering: auto;
 }
@@ -168,6 +173,8 @@ body::after {
     0 26px 90px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(14px) saturate(125%);
+  overflow: hidden;
+  isolation: isolate;
 }
 
 @supports not (backdrop-filter: blur(1px)) {
@@ -179,6 +186,7 @@ body::after {
 
 .silk-bg {
   overflow: hidden;
+  border-radius: inherit;
   background:
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 24rem),
     #020304;
@@ -189,6 +197,7 @@ body::after {
   position: absolute;
   inset: -20%;
   content: "";
+  border-radius: inherit;
   opacity: 0.72;
   filter: blur(22px);
   background:
