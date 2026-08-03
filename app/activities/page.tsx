@@ -32,10 +32,22 @@ export default function ActivitiesPage() {
             </motion.article>
           </section>
           <section>
-            <h2 className="mb-5 text-2xl font-semibold text-white">Journal Reviewer</h2>
+            <h2 className="mb-5 text-2xl font-semibold text-white">Journal Reviewers</h2>
             <motion.article initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.25 }} className="glass-card theme-card rounded-3xl p-5 sm:p-6">
-              <h3 className="text-xl font-semibold text-white">{activities.reviewing[0].title}</h3>
-              <p className="mt-2 text-sm uppercase tracking-[0.18em] text-white/42">{activities.reviewing[0].role}</p>
+              <ul className="space-y-4">
+                {activities.reviewing.map((item) => (
+                  <li key={item.title}>
+                    {item.link ? (
+                      <a href={item.link} target="_blank" rel="noreferrer" className="text-xl font-semibold text-white transition hover:text-cyan-100">
+                        {item.title}
+                      </a>
+                    ) : (
+                      <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                    )}
+                    <p className="mt-2 text-sm uppercase tracking-[0.18em] text-white/42">{item.role}</p>
+                  </li>
+                ))}
+              </ul>
             </motion.article>
           </section>
           <section>
