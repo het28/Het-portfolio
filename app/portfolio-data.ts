@@ -220,18 +220,18 @@ export const activityData = {
     { title: "Human-Centered Approaches and Technology (HCAT)", role: "October 2024 to March 2025; October 2025 to March 2026", link: "" },
   ],
   reviewing: [
+    { title: "ACM Transactions on Recommender Systems (TORS)", role: "Journal Reviewer - Q1 Journal", link: "https://dl.acm.org/journal/tors" },
     { title: "WIREs Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", link: "" },
-    { title: "ACM Transactions on Recommender Systems (TORS)", role: "Journal Reviewer", link: "https://dl.acm.org/journal/tors" },
     { title: "New Review of Hypermedia and Multimedia", role: "Journal Reviewer - Q2 CiteScore Best Quartile", link: "https://www.tandfonline.com/journals/tham20" },
   ],
   programCommittees: [
-    { title: "IntRS 2026: 13th Joint Workshop on Interfaces and Human Decision Making for Recommender Systems, co-located with RecSys 2026", role: "PC Member - 2026", link: "https://sites.google.com/view/intrs26/" },
     { title: "RecSys 2026: 20th ACM Conference on Recommender Systems", role: "Program Committee Member - 2026", link: "https://recsys.acm.org/recsys26" },
     { title: "WWW 2026: The ACM Web Conference 2026", role: "Program Committee Member - 2026", link: "https://www2026.thewebconf.org/" },
     { title: "CIKM 2026: The 35th ACM International Conference on Information and Knowledge Management", role: "Program Committee Member - 2026", link: "https://cikm2026.org/" },
     { title: "UMAP 2026: 34th ACM International Conference on User Modeling, Adaptation and Personalization", role: "Program Committee Member - 2026", link: "https://www.um.org/umap2026/" },
-    { title: "XAI.it 2026: 6th Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight", role: "Program Committee Member - 2026", link: "https://xai-it.github.io/" },
     { title: "AIED 2026: 27th International Conference on Artificial Intelligence in Education", role: "Program Committee Member - 2026", link: "https://aied-conference.com/2026" },
+    { title: "IntRS 2026: 13th Joint Workshop on Interfaces and Human Decision Making for Recommender Systems, co-located with RecSys 2026", role: "PC Member - 2026", link: "https://sites.google.com/view/intrs26/" },
+    { title: "XAI.it 2026: 6th Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight", role: "Program Committee Member - 2026", link: "https://xai-it.github.io/" },
   ],
 };
 
