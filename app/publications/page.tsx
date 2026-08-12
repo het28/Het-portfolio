@@ -21,7 +21,7 @@ export default function PublicationsPage() {
         <div className="mx-auto max-w-7xl space-y-14">
           <PublicationGrid publications={myPublications} />
           <section>
-            <h2 className="mb-5 text-2xl font-semibold text-white">Student Supervision Publication</h2>
+            <h2 className="mb-5 text-2xl font-semibold text-white">Student Supervision Publications</h2>
             <PublicationGrid publications={studentSupervisionPublications} />
           </section>
         </div>

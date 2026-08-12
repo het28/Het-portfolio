@@ -91,9 +91,8 @@ export const publications = [
     section: "student-supervision",
     title: "Temporal Linguistic Escalation Patterns in Clinical Narratives Prior to Clinical Deterioration",
     authors: ["Faizan Nadeem Mufti", "Ajithkumar Jayasree Jayakrishna", "Het Darshan Mehta", "Marco Polignano", "Giovanni Semeraro", "Ernesto William De Luca"],
-    publicationType: "Conference Paper",
+    publicationType: "Accepted Conference Paper",
     venue: "CLiC-it 2026 - Twelfth Italian Conference on Computational Linguistics, Palermo, Italy",
-    link: "https://clic2026.unipa.it/",
     citation: "@inproceedings{mufti2026temporal,\n  title = {Temporal Linguistic Escalation Patterns in Clinical Narratives Prior to Clinical Deterioration},\n  author = {Mufti, Faizan Nadeem and Jayakrishna, Ajithkumar Jayasree and Mehta, Het Darshan and Polignano, Marco and Semeraro, Giovanni and De Luca, Ernesto William},\n  booktitle = {Proceedings of the Twelfth Italian Conference on Computational Linguistics (CLiC-it 2026)},\n  year = {2026},\n  address = {Palermo, Italy}\n}",
   },
   {
@@ -223,8 +222,11 @@ export const activityData = {
   reviewing: [
     { title: "WIREs Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", link: "" },
     { title: "ACM Transactions on Recommender Systems (TORS)", role: "Journal Reviewer", link: "https://dl.acm.org/journal/tors" },
+    { title: "New Review of Hypermedia and Multimedia", role: "Journal Reviewer - Q2 CiteScore Best Quartile", link: "https://www.tandfonline.com/journals/tham20" },
   ],
   programCommittees: [
+    { title: "CHIIR 2027: ACM SIGIR Conference on Human Information Interaction and Retrieval", role: "Program Committee Member - 2027", link: "https://chiir2027.github.io/index.html" },
+    { title: "ECIR 2027: 49th European Conference on Information Retrieval", role: "Program Committee Member - 2027", link: "https://www.ecir2027.co.uk/" },
     { title: "IntRS 2026: 13th Joint Workshop on Interfaces and Human Decision Making for Recommender Systems, co-located with RecSys 2026", role: "PC Member - 2026", link: "https://sites.google.com/view/intrs26/" },
     { title: "RecSys 2026: 20th ACM Conference on Recommender Systems", role: "Program Committee Member - 2026", link: "https://recsys.acm.org/recsys26" },
     { title: "WWW 2026: The ACM Web Conference 2026", role: "Program Committee Member - 2026", link: "https://www2026.thewebconf.org/" },
