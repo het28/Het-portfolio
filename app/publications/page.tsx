@@ -7,7 +7,9 @@ import { CardLink, CitationButton, FloatingBlobs, PageIntro, SiteNav } from "../
 const myPublications = [...publications]
   .filter((paper) => paper.section !== "student-supervision")
   .sort((a, b) => a.order - b.order);
-const studentSupervisionPublications = publications.filter((paper) => paper.section === "student-supervision");
+const studentSupervisionPublications = publications
+  .filter((paper) => paper.section === "student-supervision")
+  .sort((a, b) => a.order - b.order);
 
 export default function PublicationsPage() {
   return (

@@ -80,6 +80,16 @@ export const publications = [
   },
   {
     order: 2,
+    title: "Decision4Rec: A Jev-Inspired Framework of Decision Models on Knowledge and Active Graphs for Multi-Agent Recommender Systems",
+    authors: ["Marco Polignano", "Het Darshan Mehta", "Pasquale Lops", "Ernesto William De Luca", "Giovanni Semeraro"],
+    publicationType: "Preprint",
+    venue: "arXiv, 2026",
+    link: "https://arxiv.org/abs/2610.26035",
+    doi: "10.48550/arXiv.2610.26035",
+    citation: "@misc{polignano2026decision4recjevinspiredframeworkdecision,\n  title = {Decision4Rec: A Jev-Inspired Framework of Decision Models on Knowledge and Active Graphs for Multi-Agent Recommender Systems},\n  author = {Marco Polignano and Het Darshan Mehta and Pasquale Lops and Ernesto William De Luca and Giovanni Semeraro},\n  year = {2026},\n  eprint = {2610.26035},\n  archivePrefix = {arXiv},\n  primaryClass = {cs.AI},\n  doi = {10.48550/arXiv.2610.26035},\n  url = {https://arxiv.org/abs/2610.26035}\n}",
+  },
+  {
+    order: 3,
     title: "When Multimodal Features Do Not Improve Fairness in Learning Systems",
     authors: ["Het Darshan Mehta", "Ernesto William De Luca"],
     publicationType: "Conference Workshop Paper",
@@ -87,7 +97,23 @@ export const publications = [
     citation: "Mehta, H. D., & De Luca, E. W. (2026). When multimodal features do not improve fairness in learning systems. MAAI4AIED - Multimodal Affect in AI for Education Design, Application, and Ethical Implications, Festival of Learning 2026.",
   },
   {
-    order: 4,
+    order: 5,
+    section: "student-supervision",
+    title: "When Retrieval Is Not Enough: Obsolete Facts in Agent Memory",
+    authors: ["Oleeviya Babu Poikarayil", "Tony Basil Babu", "Abdulrahman Nahhas", "Het Darshan Mehta", "Jawid Baktash", "Ernesto William De Luca", "Klaus Turowski"],
+    publicationType: "Accepted Workshop Paper",
+    venue: "PALM Workshop @ NeurIPS 2026 – Personalized, Aligned, Long-term Memory for AI Systems, Paris, France",
+  },
+  {
+    order: 6,
+    section: "student-supervision",
+    title: "Explainable Retrieval-Augmented Generation for Multilingual Dark-Pattern Auditing and Digital Consumer Protection",
+    authors: ["Jobin Roy", "Akshita Sakshi", "Shifin Mohammed", "Het Darshan Mehta", "Marco Polignano", "Giovanni Semeraro", "Ernesto William De Luca"],
+    publicationType: "Accepted Workshop Paper",
+    venue: "XAI.it 2026 @ AIxIA 2026 – Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight, Perugia, Italy. Oral presentation.",
+  },
+  {
+    order: 7,
     section: "student-supervision",
     title: "Temporal Linguistic Escalation Patterns in Clinical Narratives Prior to Clinical Deterioration",
     authors: ["Faizan Nadeem Mufti", "Ajithkumar Jayasree Jayakrishna", "Het Darshan Mehta", "Marco Polignano", "Giovanni Semeraro", "Ernesto William De Luca"],
@@ -96,7 +122,7 @@ export const publications = [
     citation: "@inproceedings{mufti2026temporal,\n  title = {Temporal Linguistic Escalation Patterns in Clinical Narratives Prior to Clinical Deterioration},\n  author = {Mufti, Faizan Nadeem and Jayakrishna, Ajithkumar Jayasree and Mehta, Het Darshan and Polignano, Marco and Semeraro, Giovanni and De Luca, Ernesto William},\n  booktitle = {Proceedings of the Twelfth Italian Conference on Computational Linguistics (CLiC-it 2026)},\n  year = {2026},\n  address = {Palermo, Italy}\n}",
   },
   {
-    order: 5,
+    order: 8,
     section: "student-supervision",
     title: "A Comprehensive Evaluation Framework for Multi-Level Bias Analysis in Graph-Based Personalization Systems",
     authors: ["Hrushikesh Ahire", "Gavin Rony Correia", "Pinky Sherwani", "Het Darshan Mehta", "Marco Polignano", "Giovanni Semeraro", "Ernesto William De Luca"],
@@ -106,7 +132,7 @@ export const publications = [
     citation: "@inproceedings{ahire2026comprehensive,\n  title = {A Comprehensive Evaluation Framework for Multi-Level Bias Analysis in Graph-Based Personalization Systems},\n  author = {Ahire, Hrushikesh and Correia, Gavin Rony and Sherwani, Pinky and Mehta, Het Darshan and Polignano, Marco and Semeraro, Giovanni and De Luca, Ernesto William},\n  year = {2026}\n}",
   },
   {
-    order: 3,
+    order: 4,
     title: "A Comprehensive Strategy to Bias and Mitigation in Human Resource Decision Systems",
     authors: ["Silvia D'Amicantonio", "Mishal Kizhakkam Kulangara", "Het Darshan Mehta", "Shalini Pal", "Marco Levantesi", "Marco Polignano", "Erasmo Purificato", "Ernesto William De Luca"],
     publicationType: "Workshop Paper",
@@ -213,7 +239,49 @@ export const activities = {
 
 // Current activity data, ordered newest to oldest. Keep future additions in this block.
 export const activityData = {
-  intro: "Teaching, peer-review, and programme-committee activities.",
+  intro: "Workshop organisation, programme committees, journal reviewing, and teaching.",
+  organisations: [
+    {
+      title: "EvolveIR 2027: 1st International Workshop on Evolving Information Retrieval and Recommendation Systems",
+      role: "Organiser",
+      detail: "Co-located with the 49th European Conference on Information Retrieval (ECIR 2027), 21–25 March 2027, Southampton, United Kingdom.",
+      link: "https://het28.github.io/EvolveIR-2027/#about",
+      people: [
+        {
+          name: "Het Darshan Mehta",
+          affiliation: "Otto von Guericke University Magdeburg, Germany",
+          note: "Coordinates submissions, reviewer communication, the workshop website, and overall organisation.",
+        },
+        { name: "Giulia Coucourde", affiliation: "University of Turin, Italy" },
+        { name: "Erasmo Purificato", affiliation: "European Commission, Joint Research Centre, Ispra, Italy" },
+        { name: "Federica Cena", affiliation: "University of Turin, Italy" },
+        { name: "Ernesto William De Luca", affiliation: "Otto von Guericke University Magdeburg, Germany" },
+      ],
+    },
+    {
+      title: "4th HCAI Symposium 2026",
+      role: "Local Organising Committee",
+      detail: "7th and 8th December 2026, Magdeburg, Germany. Organised by the Human-Centred Artificial Intelligence Research Group at Otto von Guericke University Magdeburg.",
+      link: "https://ovgu-hcai.github.io/symposium2026/#/organisers",
+      people: [
+        {
+          name: "Ernesto William De Luca",
+          affiliation: "Otto von Guericke University Magdeburg, Germany",
+          note: "General Chair. Head, Human-Centred Artificial Intelligence Research Group.",
+        },
+        {
+          name: "Het Darshan Mehta",
+          affiliation: "Otto von Guericke University Magdeburg, Germany",
+          note: "Local Organising Committee. PhD Researcher, HCAI, OVGU.",
+        },
+        {
+          name: "Iveta Jaroscakova",
+          affiliation: "Otto von Guericke University Magdeburg, Germany",
+          note: "Local Organising Committee. Innovation Experience Incubator Coordinator.",
+        },
+      ],
+    },
+  ],
   teaching: [
     { title: "Human-Centered Artificial Intelligence (HCAI)", role: "April to September 2025", link: "" },
     { title: "Human-Centered Natural Language Processing (HCNLP)", role: "October 2024 to March 2025; October 2025 to March 2026", link: "" },
@@ -222,6 +290,7 @@ export const activityData = {
   reviewing: [
     { title: "ACM Transactions on Recommender Systems (TORS)", role: "Journal Reviewer - Q1 Journal", link: "https://dl.acm.org/journal/tors" },
     { title: "WIREs Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", link: "" },
+    { title: "User Modeling and User-Adapted Interaction", role: "Journal Reviewer - Q1 Journal", link: "https://link.springer.com/journal/11257" },
     { title: "New Review of Hypermedia and Multimedia", role: "Journal Reviewer - Q2 CiteScore Best Quartile", link: "https://www.tandfonline.com/journals/tham20" },
   ],
   programCommittees: [
