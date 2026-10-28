@@ -8,7 +8,6 @@ import {
   MapPin,
   Microscope,
   Phone,
-  Sparkles,
 } from "lucide-react";
 
 // SITE CONTENT FILE
@@ -60,10 +59,10 @@ export const highlights = [
       "Publications and projects across recommender systems, LLMs, NLP, and graph-based personalization.",
   },
   {
-    icon: Sparkles,
-    title: "Human-Centered AI Tutor",
+    icon: GraduationCap,
+    title: "PhD Researcher",
     detail:
-      "Tutored HCAI, HCNLP, and human-centered technology courses at Otto-von-Guericke University.",
+      "Multi-group and multi-class fairness for knowledge-aware recommender systems at Otto-von-Guericke University.",
   },
 ];
 
@@ -289,7 +288,7 @@ export const activityData = {
   ],
   reviewing: [
     { title: "ACM Transactions on Recommender Systems (TORS)", role: "Journal Reviewer - Q1 Journal", link: "https://dl.acm.org/journal/tors" },
-    { title: "WIREs Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", link: "" },
+    { title: "WIREs Data Mining and Knowledge Discovery", role: "Journal Reviewer - Q1 Journal", link: "https://wires.onlinelibrary.wiley.com/journal/19424795" },
     { title: "User Modeling and User-Adapted Interaction", role: "Journal Reviewer - Q1 Journal", link: "https://link.springer.com/journal/11257" },
     { title: "New Review of Hypermedia and Multimedia", role: "Journal Reviewer - Q2 CiteScore Best Quartile", link: "https://www.tandfonline.com/journals/tham20" },
   ],
@@ -354,7 +353,7 @@ export const education = [
     location: "Magdeburg, Germany",
   },
   {
-    degree: "M.Sc. Digital Engineering",
+    degree: "M.Sc. Digital Engineering, Computer Science",
     school: "Otto-von-Guericke University",
     period: "Oct 2023 - Jan 2026",
     location: "Magdeburg, Germany",
@@ -366,7 +365,7 @@ export const education = [
     location: "Bari, Italy",
   },
   {
-    degree: "B.E. Electronics and Communication",
+    degree: "B.Tech. Electronics and Communication",
     school: "Dharmsinh Desai University",
     period: "2019 - 2023",
     location: "Nadiad, India",

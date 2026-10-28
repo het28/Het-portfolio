@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Check, Copy, ExternalLink, Quote } from "lucide-react";
 import { navLinks, profile } from "./portfolio-data";
@@ -12,6 +12,63 @@ export function assetPath(path: string) {
 
 function shouldOpenNewTab(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+}
+
+export type SiteTheme = "glass" | "bento" | "rail" | "reel" | "signal" | "axis";
+
+const themeTrials: { id: SiteTheme; label: string; note: string }[] = [
+  { id: "glass", label: "Glass", note: "Current site" },
+  { id: "axis", label: "Axis", note: "Reference" },
+];
+
+const ThemeContext = createContext<{ theme: SiteTheme; setTheme: (theme: SiteTheme) => void }>({
+  theme: "axis",
+  setTheme: () => {},
+});
+
+export function useSiteTheme() {
+  return useContext(ThemeContext).theme;
+}
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<SiteTheme>("axis");
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("portfolio-theme-lab");
+    if (saved === "glass" || saved === "night") setTheme("glass");
+    if (saved === "rail" || saved === "signal" || saved === "axis") setTheme("axis");
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    if (ready) window.localStorage.setItem("portfolio-theme-lab", theme);
+  }, [ready, theme]);
+
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+}
+
+export function ThemeLab() {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  return (
+    <div className="theme-lab fixed bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-2 z-[80] w-36 border border-[#1a1814]/15 bg-[#fffdf9] p-2 text-[#1a1814] shadow-[0_16px_40px_rgba(26,24,20,0.16)] sm:bottom-3 sm:left-auto sm:right-3 sm:w-44">
+      <p className="mb-1 px-1 text-[0.62rem] font-medium uppercase tracking-[0.14em] text-[#1a1814]/55 sm:mb-2">Local trial</p>
+      <div className="grid grid-cols-2 gap-1">
+        {themeTrials.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setTheme(item.id)}
+            className={`px-3 py-2 text-sm font-medium transition ${theme === item.id ? "bg-[#1a1814] text-[#f6f3ee]" : "bg-[#1a1814]/5 text-[#1a1814] hover:bg-[#1a1814]/10"}`}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export function SiteCursor() {

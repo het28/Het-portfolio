@@ -24,6 +24,7 @@ import {
   socialLinks,
 } from "./portfolio-data";
 import { CitationButton } from "./shared";
+import { AxisHome } from "./themes/axis";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 34 },
@@ -53,6 +54,10 @@ function shouldOpenNewTabItem(item: { href: string; isAsset?: boolean }) {
 }
 
 export default function Home() {
+  return <AxisHome />;
+}
+
+function GlassHome() {
   const { scrollY, scrollYProgress } = useScroll();
   const nameY = useTransform(scrollY, [0, 760], [74, -170]);
   const heroPanelY = useTransform(scrollY, [0, 760], [0, 58]);

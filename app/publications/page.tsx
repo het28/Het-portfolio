@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { publications } from "../portfolio-data";
 import { CardLink, CitationButton, FloatingBlobs, PageIntro, SiteNav } from "../shared";
+import { AxisPublications } from "../themes/axis";
 
 const myPublications = [...publications]
   .filter((paper) => paper.section !== "student-supervision")
@@ -12,6 +13,10 @@ const studentSupervisionPublications = publications
   .sort((a, b) => a.order - b.order);
 
 export default function PublicationsPage() {
+  return <AxisPublications />;
+}
+
+function GlassPublicationsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />

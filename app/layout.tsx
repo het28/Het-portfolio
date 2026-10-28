@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { profile } from "./portfolio-data";
-import { SiteCursor } from "./shared";
 
 export const metadata: Metadata = {
   title: `${profile.name} | Portfolio`,
@@ -11,17 +10,20 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <SiteCursor />
-        {children}
-      </body>
+    <html lang="en" data-theme="axis">
+      <body>{children}</body>
     </html>
   );
 }

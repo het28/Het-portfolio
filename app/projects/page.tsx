@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { pinnedProjects } from "../portfolio-data";
 import { CardLink, FloatingBlobs, PageHero, SiteNav } from "../shared";
+import { AxisProjects } from "../themes/axis";
 
 export default function ProjectsPage() {
+  return <AxisProjects />;
+}
+
+function GlassProjectsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />

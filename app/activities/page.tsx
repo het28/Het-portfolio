@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { activityData as activities } from "../portfolio-data";
 import { CardLink, FloatingBlobs, PageIntro, SiteNav } from "../shared";
+import { AxisActivities } from "../themes/axis";
 
 export default function ActivitiesPage() {
+  return <AxisActivities />;
+}
+
+function GlassActivitiesPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-white">
       <FloatingBlobs />
