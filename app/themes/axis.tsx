@@ -640,8 +640,8 @@ export function AxisHome() {
   return (
     <Frame>
       <Top />
-      <section className="relative grid items-end gap-8 border-b border-black py-6 md:grid-cols-[minmax(0,1.15fr)_minmax(14rem,20rem)]">
-        <div>
+      <section className="relative grid items-end gap-8 border-b border-black py-6 md:grid-cols-[minmax(0,1.15fr)_minmax(14rem,20rem)] xl:grid-cols-[minmax(0,max-content)_minmax(18rem,32rem)] xl:justify-start xl:gap-x-14 2xl:grid-cols-[minmax(0,max-content)_minmax(22rem,36rem)] 2xl:gap-x-16">
+        <div className="min-w-0 xl:max-w-[42rem]">
           <p className="font-mono text-[0.62rem] uppercase tracking-[0.12em] sm:text-[0.68rem] sm:tracking-[0.18em]">PhD researcher · {profile.location}</p>
           <h1 className="mt-4 text-[clamp(3.4rem,12vw,7.4rem)] font-semibold leading-[0.78] tracking-[-0.07em]">
             <Drift distance={-10}>Het</Drift>

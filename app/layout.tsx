@@ -6,7 +6,12 @@ export const metadata: Metadata = {
   title: `${profile.name} | Portfolio`,
   description: `Academic AI research portfolio for ${profile.name}.`,
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico?v=2", sizes: "any" },
+      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png?v=2",
+    shortcut: "/favicon.ico?v=2",
   },
 };
 
