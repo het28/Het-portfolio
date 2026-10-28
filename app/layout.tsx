@@ -7,11 +7,12 @@ export const metadata: Metadata = {
   description: `Academic AI research portfolio for ${profile.name}.`,
   icons: {
     icon: [
-      { url: "/favicon.ico?v=2", sizes: "any" },
-      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+      { url: "/hm-icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/hm-icon-180.png", sizes: "180x180", type: "image/png" },
+      { url: "/hm.svg", type: "image/svg+xml" },
     ],
-    apple: "/apple-touch-icon.png?v=2",
-    shortcut: "/favicon.ico?v=2",
+    apple: [{ url: "/hm-icon-180.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/hm-icon-32.png",
   },
 };
 

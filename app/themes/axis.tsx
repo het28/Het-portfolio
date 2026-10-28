@@ -91,7 +91,7 @@ function Top() {
   return (
     <header className="sticky top-[calc(2.5rem+env(safe-area-inset-top))] z-40 -mx-4 mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-black bg-[#f3efe6] px-4 py-3 md:mx-0">
       <a href={assetPath("") || "/"} className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-        <img src={assetPath("favicon.svg")} alt="" className="h-7 w-7" />
+        <img src={assetPath("hm.svg")} alt="" className="h-7 w-7" />
         {profile.name}
       </a>
       <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[0.62rem] uppercase tracking-[0.08em] sm:gap-x-4 sm:text-[0.68rem] sm:tracking-[0.14em]">
