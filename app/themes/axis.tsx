@@ -258,13 +258,13 @@ function PaperPick({
   paper: (typeof publications)[number];
 }) {
   const reduce = useReducedMotion();
-  const x = useTransform(progress, [0, 1], [index === 0 ? -28 : 32, 0]);
-  const y = useTransform(progress, [0, 1], [index === 0 ? -10 : 16, 0]);
-  const rotate = useTransform(progress, [0, 1], [index === 0 ? -3 : 4, index === 0 ? -0.8 : 1.2]);
+  const x = useTransform(progress, [0, 1], [index === 0 ? -8 : 0, 0]);
+  const y = useTransform(progress, [0, 1], [index === 0 ? -8 : 10, 0]);
+  const rotate = useTransform(progress, [0, 1], [index === 0 ? -1.4 : 1.2, index === 0 ? -0.4 : 0.4]);
 
   return (
     <motion.article style={reduce ? undefined : { x, y, rotate }} className="relative border border-black bg-white p-4">
-      <Sticker className={index === 0 ? "-left-2 -top-3 -rotate-6" : "-right-2 -top-3 rotate-3"} ink={index === 1}>
+      <Sticker className={index === 0 ? "-left-1 -top-3 -rotate-6" : "-right-1 -top-3 rotate-3"} ink={index === 1}>
         {paper.publicationType === "Journal Article" ? "Journal" : "First author"}
       </Sticker>
       <p className="mt-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-black/45">{paper.publicationType}</p>
@@ -291,7 +291,7 @@ function RecommendShelf() {
       <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Recommendations</p>
       <h2 className="mt-2 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Papers I led.</h2>
       <p className="mt-3 max-w-2xl text-sm leading-6">The Springer journal article, and the Festival of Learning workshop paper from Seoul.</p>
-      <div className="mt-12 grid items-start gap-5 md:grid-cols-2">
+      <div className="mt-12 grid items-start gap-5 px-3 md:grid-cols-2 md:px-6">
         {picks.map((paper, index) => (
           <PaperPick key={paper.title} progress={scrollYProgress} index={index} paper={paper} />
         ))}
@@ -640,7 +640,7 @@ export function AxisHome() {
   return (
     <Frame>
       <Top />
-      <section className="relative grid items-end gap-8 border-b border-black py-6 md:grid-cols-[minmax(0,1.15fr)_minmax(14rem,20rem)] xl:grid-cols-[minmax(0,1fr)_26rem]">
+      <section className="relative grid items-end gap-8 border-b border-black py-6 md:grid-cols-[minmax(0,1.15fr)_minmax(14rem,20rem)] xl:grid-cols-[minmax(0,40rem)_minmax(0,1fr)]">
         <div>
           <p className="font-mono text-[0.62rem] uppercase tracking-[0.12em] sm:text-[0.68rem] sm:tracking-[0.18em]">PhD researcher · {profile.location}</p>
           <h1 className="mt-4 text-[clamp(3.4rem,12vw,7.4rem)] font-semibold leading-[0.78] tracking-[-0.07em]">
@@ -660,7 +660,11 @@ export function AxisHome() {
             ))}
           </div>
         </div>
-        <Portrait />
+        <div className="xl:flex xl:justify-center">
+          <div className="w-full xl:w-[22rem]">
+            <Portrait />
+          </div>
+        </div>
       </section>
       <FairnessScene />
       <RecommendShelf />
