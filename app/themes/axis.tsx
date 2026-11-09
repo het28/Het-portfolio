@@ -18,6 +18,9 @@ import {
 } from "../portfolio-data";
 import { assetPath } from "../shared";
 import { classicLines } from "./reading-notes";
+import "../swarm-build/swarm-build.css";
+
+const build = { "data-swarm-block": "", "data-swarm-pending": "" };
 
 const ticker =
   "Algorithmic fairness  ·  Graph neural networks  ·  Recommender systems  ·  Bias detection  ·  Knowledge graphs  ·  Large language models  ·  ";
@@ -33,10 +36,11 @@ function Me({ name }: { name: string }) {
   return name === "Het Darshan Mehta" ? <strong className="bg-[#f7f1e8] px-1 text-[#722F37]">{name}</strong> : <>{name}</>;
 }
 
-function Go({ href, children }: { href: string; children: React.ReactNode }) {
+function Go({ href, children, mark = false }: { href: string; children: React.ReactNode; mark?: boolean }) {
   const outside = ext(href);
   return (
     <a
+      {...(mark ? build : {})}
       href={href}
       target={outside ? "_blank" : undefined}
       rel={outside ? "noreferrer" : undefined}
@@ -50,7 +54,7 @@ function Go({ href, children }: { href: string; children: React.ReactNode }) {
 
 function Ticker() {
   return (
-    <div className="fixed inset-x-0 top-0 z-50 border-b border-black bg-[#722F37] pt-[env(safe-area-inset-top)] text-[#f7f1e8]">
+    <div {...build} className="fixed inset-x-0 top-0 z-50 border-b border-black bg-[#722F37] pt-[env(safe-area-inset-top)] text-[#f7f1e8]">
       <div className="flex h-10 items-center overflow-hidden">
       <div className="signal-marquee flex w-max shrink-0 font-mono text-[0.68rem] uppercase tracking-[0.14em] sm:text-xs sm:tracking-[0.18em]">
         <span className="whitespace-nowrap px-4">{ticker.repeat(4)}</span>
@@ -63,7 +67,7 @@ function Ticker() {
 
 function Spine() {
   return (
-    <div className="pointer-events-none fixed bottom-0 left-0 top-[calc(2.5rem+env(safe-area-inset-top))] z-30 hidden w-12 items-center justify-center border-r border-black bg-[#f3efe6] md:flex">
+    <div {...build} className="pointer-events-none fixed bottom-0 left-0 top-[calc(2.5rem+env(safe-area-inset-top))] z-30 hidden w-12 items-center justify-center border-r border-black bg-[#f3efe6] md:flex">
       <p className="rotate-180 font-mono text-[0.62rem] uppercase tracking-[0.42em] [writing-mode:vertical-rl]">
         Het Darshan Mehta · {profile.location}
       </p>
@@ -71,9 +75,9 @@ function Spine() {
   );
 }
 
-function HmMark({ className = "" }: { className?: string }) {
+function HmMark({ className = "", mark = false }: { className?: string; mark?: boolean }) {
   return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
+    <svg {...(mark ? build : {})} viewBox="0 0 32 32" className={className} aria-hidden="true">
       <g fill="currentColor">
         <rect x="3" y="6" width="2.6" height="20" />
         <rect x="10.4" y="6" width="2.6" height="20" />
@@ -90,17 +94,17 @@ function HmMark({ className = "" }: { className?: string }) {
 function Top() {
   return (
     <header className="sticky top-[calc(2.5rem+env(safe-area-inset-top))] z-40 -mx-4 mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-black bg-[#f3efe6] px-4 py-3 md:mx-0">
-      <a href={assetPath("") || "/"} className="flex items-center gap-2 text-sm font-semibold tracking-tight">
+      <a {...build} href={assetPath("") || "/"} className="flex items-center gap-2 text-sm font-semibold tracking-tight">
         <img src={assetPath("hm.svg")} alt="" className="h-7 w-7" />
         {profile.name}
       </a>
       <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[0.62rem] uppercase tracking-[0.08em] sm:gap-x-4 sm:text-[0.68rem] sm:tracking-[0.14em]">
         {navLinks.map((link) => (
-          <a key={link.href} href={assetPath(link.href.replace(/^\//, ""))} className="py-1 hover:bg-[#722F37] hover:text-[#f7f1e8]">
+          <a {...build} key={link.href} href={assetPath(link.href.replace(/^\//, ""))} className="py-1 hover:bg-[#722F37] hover:text-[#f7f1e8]">
             {link.label}
           </a>
         ))}
-        <a href={assetPath(profile.resumePath)} target="_blank" rel="noreferrer" className="bg-[#722F37] px-2 py-1 text-[#f7f1e8]">
+        <a {...build} href={assetPath(profile.resumePath)} target="_blank" rel="noreferrer" className="bg-[#722F37] px-2 py-1 text-[#f7f1e8]">
           CV
         </a>
       </nav>
@@ -109,9 +113,23 @@ function Top() {
 }
 
 function Frame({ children }: { children: React.ReactNode }) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let dead = false;
+    let swarm: { destroy: () => void } | undefined;
+    import("../swarm-build/swarm-build.js").then(({ swarmBuildPage }) => {
+      const nodes = rootRef.current?.querySelectorAll<HTMLElement>("[data-swarm-block]");
+      if (dead || !nodes?.length) return;
+      swarm = swarmBuildPage(nodes, { speed: 1.55, typeSpeed: 1.8 });
+    });
+    return () => {
+      dead = true;
+      swarm?.destroy();
+    };
+  }, []);
   return (
-    <div className="relative min-h-screen bg-[#f3efe6] pb-28 text-[#1c1614]">
-      <HmMark className="pointer-events-none fixed bottom-10 right-28 z-0 hidden w-44 text-[#722F37] opacity-[0.14] md:block" />
+    <div ref={rootRef} className="axis-live relative min-h-screen bg-[#f3efe6] pb-28 text-[#1c1614]">
+      <HmMark mark className="pointer-events-none fixed bottom-10 right-28 z-0 hidden w-44 text-[#722F37] opacity-[0.14] md:block" />
       <Ticker />
       <Spine />
       <div className="relative z-10 overflow-x-clip px-4 pt-[calc(3rem+env(safe-area-inset-top))] md:pl-16 md:pr-8">{children}</div>
@@ -122,7 +140,7 @@ function Frame({ children }: { children: React.ReactNode }) {
 function Row({ index, label, children, id }: { index: string; label: string; children: React.ReactNode; id?: string }) {
   return (
     <section id={id} className="grid scroll-mt-24 grid-cols-[3.1rem_minmax(0,1fr)] border-b border-black">
-      <div className="border-r border-black bg-[#722F37] px-2 py-5 text-[#f7f1e8]">
+      <div {...build} className="border-r border-black bg-[#722F37] px-2 py-5 text-[#f7f1e8]">
         <p className="font-mono text-[0.65rem]">{index}</p>
         <div className="mt-3 space-y-1.5">
           {Array.from({ length: 5 }).map((_, mark) => (
@@ -131,19 +149,19 @@ function Row({ index, label, children, id }: { index: string; label: string; chi
         </div>
       </div>
       <div className="min-w-0 px-4 py-5 sm:px-6">
-        <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">{label}</p>
+        <p {...build} className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">{label}</p>
         <div className="mt-3">{children}</div>
       </div>
     </section>
   );
 }
 
-function Sticker({ children, className = "", ink = false }: { children: React.ReactNode; className?: string; ink?: boolean }) {
+function Sticker({ children, className = "", ink = false, mark = false }: { children: React.ReactNode; className?: string; ink?: boolean; mark?: boolean }) {
   const tone = ink
     ? "border-black bg-[#f7f1e8] text-black shadow-[3px_3px_0_#722F37]"
     : "border-[#722F37] bg-[#f7f1e8] text-[#722F37] shadow-[3px_3px_0_#1c1614]";
   return (
-    <span className={`pointer-events-none absolute z-20 inline-flex select-none items-center gap-1 border px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.14em] ${tone} ${className}`}>
+    <span {...(mark ? build : {})} className={`pointer-events-none absolute z-20 inline-flex select-none items-center gap-1 border px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.14em] ${tone} ${className}`}>
       {children}
     </span>
   );
@@ -177,7 +195,7 @@ function Portrait() {
   const fairY = useTransform(scrollYProgress, [0, 1], [8, -28]);
 
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-sm md:mx-0 md:max-w-none">
+    <div {...build} ref={ref} className="relative mx-auto w-full max-w-sm md:mx-0 md:max-w-none">
       <motion.div style={reduce ? undefined : { y, rotate }} className="relative">
         <motion.div
           animate={reduce ? undefined : { y: [0, -8, 0] }}
@@ -209,14 +227,14 @@ function Portrait() {
   );
 }
 
-function Crook({ children, turn = -1.2, className = "" }: { children: React.ReactNode; turn?: number; className?: string }) {
+function Crook({ children, turn = -1.2, className = "", mark = false }: { children: React.ReactNode; turn?: number; className?: string; mark?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 92%", "start 60%"] });
   const rotate = useTransform(scrollYProgress, [0, 1], [turn + 3.5, turn]);
   const y = useTransform(scrollYProgress, [0, 1], [14, 0]);
   return (
-    <motion.div ref={ref} style={reduce ? { rotate: turn } : { rotate, y }} className={className}>
+    <motion.div {...(mark ? build : {})} ref={ref} style={reduce ? { rotate: turn } : { rotate, y }} className={className}>
       {children}
     </motion.div>
   );
@@ -231,16 +249,16 @@ function FairnessScene() {
 
   return (
     <section ref={ref} className="border-b border-black py-14">
-      <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">On fairness</p>
+      <p {...build} className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">On fairness</p>
       <motion.blockquote style={reduce ? { rotate: -1.4 } : { rotate, y }} className="mt-4 max-w-3xl origin-left">
-        <p className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl">
+        <p {...build} className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl">
           “Fairness is a very subjective state. Different people have different definitions and understandings of fairness from different angles.”
         </p>
-        <footer className="mt-5 text-sm leading-6">
+        <footer {...build} className="mt-5 text-sm leading-6">
           <span className="block font-semibold">Yao Wu, Jian Cao, and Guandong Xu</span>
           <span className="block text-black/55">ACM Transactions on Knowledge Discovery from Data, 2023</span>
         </footer>
-        <a href="https://doi.org/10.1145/3604558" target="_blank" rel="noreferrer" className="mt-2 inline-flex font-mono text-[0.68rem] uppercase tracking-[0.12em] underline decoration-black/30 underline-offset-4">
+        <a {...build} href="https://doi.org/10.1145/3604558" target="_blank" rel="noreferrer" className="mt-2 inline-flex font-mono text-[0.68rem] uppercase tracking-[0.12em] underline decoration-black/30 underline-offset-4">
           DOI 10.1145/3604558
         </a>
       </motion.blockquote>
@@ -263,7 +281,7 @@ function PaperPick({
   const rotate = useTransform(progress, [0, 1], [index === 0 ? -1.4 : 1.2, index === 0 ? -0.4 : 0.4]);
 
   return (
-    <motion.article style={reduce ? undefined : { x, y, rotate }} className="relative border border-black bg-white p-4">
+    <motion.article {...build} style={reduce ? undefined : { x, y, rotate }} className="relative border border-black bg-white p-4">
       <Sticker className={index === 0 ? "-left-1 -top-3 -rotate-6" : "-right-1 -top-3 rotate-3"} ink={index === 1}>
         {paper.publicationType === "Journal Article" ? "Journal" : "First author"}
       </Sticker>
@@ -288,9 +306,9 @@ function RecommendShelf() {
 
   return (
     <section ref={ref} className="relative overflow-x-clip border-b border-black py-14">
-      <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Recommendations</p>
-      <h2 className="mt-2 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Papers I led.</h2>
-      <p className="mt-3 max-w-2xl text-sm leading-6">The Springer journal article, and the Festival of Learning workshop paper from Seoul.</p>
+      <p {...build} className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Recommendations</p>
+      <h2 {...build} className="mt-2 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Papers I led.</h2>
+      <p {...build} className="mt-3 max-w-2xl text-sm leading-6">The Springer journal article, and the Festival of Learning workshop paper from Seoul.</p>
       <div className="mt-12 grid items-start gap-5 px-3 md:grid-cols-2 md:px-6">
         {picks.map((paper, index) => (
           <PaperPick key={paper.title} progress={scrollYProgress} index={index} paper={paper} />
@@ -387,6 +405,7 @@ function PaperRow({ paper, index }: { paper: (typeof publications)[number]; inde
         if (target.closest("a, button")) return;
         setOpen((value) => !value);
       }}
+      {...build}
       className="relative grid gap-3 border-t border-black py-5 first:border-t-0 md:grid-cols-[3rem_minmax(0,1fr)]"
     >
       <p className="font-mono text-xs">{String(index + 1).padStart(2, "0")}</p>
@@ -583,7 +602,7 @@ function Reading() {
   }
 
   return (
-    <div>
+    <div {...build}>
       <div className="relative min-h-52">
         {fact ? (
             <motion.article
@@ -642,19 +661,19 @@ export function AxisHome() {
       <Top />
       <section className="relative grid items-end gap-8 border-b border-black py-6 md:grid-cols-[minmax(0,1.15fr)_minmax(14rem,20rem)] xl:grid-cols-[minmax(0,40rem)_minmax(0,1fr)]">
         <div>
-          <p className="font-mono text-[0.62rem] uppercase tracking-[0.12em] sm:text-[0.68rem] sm:tracking-[0.18em]">PhD researcher · {profile.location}</p>
-          <h1 className="mt-4 text-[clamp(3.4rem,12vw,7.4rem)] font-semibold leading-[0.78] tracking-[-0.07em]">
+          <p {...build} className="font-mono text-[0.62rem] uppercase tracking-[0.12em] sm:text-[0.68rem] sm:tracking-[0.18em]">PhD researcher · {profile.location}</p>
+          <h1 {...build} className="mt-4 text-[clamp(3.4rem,12vw,7.4rem)] font-semibold leading-[0.78] tracking-[-0.07em]">
             <Drift distance={-10}>Het</Drift>
             <Drift distance={-26} className="pl-[14%]">
               Darshan
             </Drift>
             <Drift distance={-44}>Mehta</Drift>
           </h1>
-          <p className="mt-6 max-w-xl text-xl font-medium leading-snug tracking-tight sm:text-2xl">{profile.tagline}</p>
-          <p className="mt-4 max-w-xl text-sm leading-7">{profile.summary}</p>
+          <p {...build} className="mt-6 max-w-xl text-xl font-medium leading-snug tracking-tight sm:text-2xl">{profile.tagline}</p>
+          <p {...build} className="mt-4 max-w-xl text-sm leading-7">{profile.summary}</p>
           <div className="mt-5 flex flex-wrap gap-4">
             {socialLinks.map((item) => (
-              <Go key={item.label} href={item.href}>
+              <Go mark key={item.label} href={item.href}>
                 {item.label}
               </Go>
             ))}
@@ -670,9 +689,9 @@ export function AxisHome() {
       <RecommendShelf />
       <Row id="path" index="01" label="Path">
         <div className="relative space-y-6">
-          <Sticker className="left-[40%] top-0 rotate-6" ink>Since 2022</Sticker>
+          <Sticker mark className="left-[40%] top-0 rotate-6" ink>Since 2022</Sticker>
           {experiences.map((item) => (
-            <article key={item.role} className="border-t border-black pt-4 first:border-t-0 first:pt-0">
+            <article {...build} key={item.role} className="border-t border-black pt-4 first:border-t-0 first:pt-0">
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em]">{item.period}</p>
               <h3 className="mt-2 text-2xl font-semibold tracking-tight">{item.role}</h3>
               <p className="mt-1 text-sm">
@@ -695,7 +714,7 @@ export function AxisHome() {
         <div className="grid gap-6 md:grid-cols-2">
           <div>
             {skillGroups.map((group) => (
-              <p key={group.title} className="mt-3 text-sm leading-6 first:mt-0">
+              <p {...build} key={group.title} className="mt-3 text-sm leading-6 first:mt-0">
                 <span className="font-mono text-[0.68rem] uppercase tracking-[0.12em]">{group.title}</span>
                 <br />
                 {group.skills.join(" · ")}
@@ -704,7 +723,7 @@ export function AxisHome() {
           </div>
           <div>
             {education.map((item) => (
-              <article key={item.degree} className="mt-4 border-t border-black pt-3 first:mt-0 first:border-t-0 first:pt-0">
+              <article {...build} key={item.degree} className="mt-4 border-t border-black pt-3 first:mt-0 first:border-t-0 first:pt-0">
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.12em]">{item.period}</p>
                 <h3 className="mt-1 font-semibold leading-6">{item.degree}</h3>
                 <p className="text-sm text-black/60">
@@ -712,15 +731,15 @@ export function AxisHome() {
                 </p>
               </article>
             ))}
-            <p className="mt-4 font-mono text-xs uppercase tracking-[0.12em]">{spokenLanguages.join(" · ")}</p>
+            <p {...build} className="mt-4 font-mono text-xs uppercase tracking-[0.12em]">{spokenLanguages.join(" · ")}</p>
           </div>
         </div>
       </Row>
       <Row id="contact" index="04" label="Contact">
         <div className="relative">
-        <Sticker className="left-[46%] top-0 rotate-3" ink>Say hello</Sticker>
-        <p className="max-w-2xl text-2xl font-medium leading-snug tracking-tight">{profile.availability}</p>
-        <a href={`mailto:${profile.email}`} className="mt-4 block break-words text-[clamp(1.35rem,4.5vw,3rem)] font-semibold leading-none tracking-[-0.04em] hover:bg-[#722F37] hover:text-[#f7f1e8]">
+        <Sticker mark className="left-[46%] top-0 rotate-3" ink>Say hello</Sticker>
+        <p {...build} className="max-w-2xl text-2xl font-medium leading-snug tracking-tight">{profile.availability}</p>
+        <a {...build} href={`mailto:${profile.email}`} className="mt-4 block break-words text-[clamp(1.35rem,4.5vw,3rem)] font-semibold leading-none tracking-[-0.04em] hover:bg-[#722F37] hover:text-[#f7f1e8]">
           {profile.email}
         </a>
         <div className="mt-5 flex flex-wrap gap-4">
@@ -729,11 +748,11 @@ export function AxisHome() {
             .map((card) => {
               const text = card.label === "ORCID" ? `ORCID ${card.value}` : card.value;
               return card.href ? (
-                <a key={card.label} href={card.href} className="font-mono text-xs uppercase tracking-[0.12em] underline">
+                <a {...build} key={card.label} href={card.href} className="font-mono text-xs uppercase tracking-[0.12em] underline">
                   {text}
                 </a>
               ) : (
-                <span key={card.label} className="font-mono text-xs uppercase tracking-[0.12em]">
+                <span {...build} key={card.label} className="font-mono text-xs uppercase tracking-[0.12em]">
                   {text}
                 </span>
               );
@@ -750,19 +769,19 @@ export function AxisActivities() {
     <Frame>
       <Top />
       <section className="relative border-b border-black py-8">
-        <Sticker className="right-8 top-16 -rotate-6" ink>Save the date</Sticker>
-        <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Activities</p>
-        <h1 className="mt-3 max-w-4xl text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
+        <Sticker mark className="right-8 top-16 -rotate-6" ink>Save the date</Sticker>
+        <p {...build} className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Activities</p>
+        <h1 {...build} className="mt-3 max-w-4xl text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
           <Drift distance={-8}>Organisation</Drift>
           <Drift distance={-18} className="pl-[12%]">and Activities</Drift>
         </h1>
-        <p className="mt-5 max-w-2xl text-sm leading-7">{activityData.intro}</p>
+        <p {...build} className="mt-5 max-w-2xl text-sm leading-7">{activityData.intro}</p>
       </section>
       <Row index="01" label="Organisations">
         <div className="grid gap-8 md:grid-cols-2">
           {activityData.organisations.map((item, index) => (
             <Crook key={item.title} turn={index === 0 ? -0.6 : 0.7}>
-            <article className={`relative border border-black p-5 ${index === 0 ? "bg-[#722F37] text-[#f7f1e8]" : "bg-white"}`}>
+            <article {...build} className={`relative border border-black p-5 ${index === 0 ? "bg-[#722F37] text-[#f7f1e8]" : "bg-white"}`}>
               <Sticker className={index === 0 ? "-right-3 -top-3 rotate-6" : "-left-3 -top-3 -rotate-6"}>{index === 0 ? "Workshop" : "Local"}</Sticker>
               <Sticker className={index === 0 ? "bottom-3 right-3 -rotate-3" : "-bottom-3 right-4 rotate-6"}>{index === 0 ? "ECIR" : "7–8 Dec"}</Sticker>
               <p className="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.14em]">{item.role}</p>
@@ -788,7 +807,7 @@ export function AxisActivities() {
       <Row index="02" label="Programme Committees (PC Member)">
         <ul className="space-y-3 text-sm">
           {activityData.programCommittees.map((item) => (
-            <li key={item.title}>
+            <li {...build} key={item.title}>
               <Go href={item.link}>{item.title}</Go>
             </li>
           ))}
@@ -797,7 +816,7 @@ export function AxisActivities() {
       <Row index="03" label="Reviewing">
         <ul className="space-y-4 text-sm">
           {activityData.reviewing.map((item) => (
-            <li key={item.title}>
+            <li {...build} key={item.title}>
               {item.link ? <Go href={item.link}>{item.title}</Go> : <p className="font-semibold">{item.title}</p>}
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-black/45">{item.role}</p>
             </li>
@@ -807,7 +826,7 @@ export function AxisActivities() {
       <Row index="04" label="Teaching">
         <ul className="space-y-4 text-sm">
           {activityData.teaching.map((item) => (
-            <li key={item.title}>
+            <li {...build} key={item.title}>
               <p className="font-semibold">{item.title}</p>
               <p className="text-black/55">{item.role}</p>
             </li>
@@ -826,9 +845,9 @@ export function AxisPublications() {
     <Frame>
       <Top />
       <section className="relative border-b border-black py-8">
-        <Sticker className="bottom-4 right-10 rotate-3" ink>Peer reviewed</Sticker>
-        <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Publications</p>
-        <h1 className="mt-3 text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
+        <Sticker mark className="bottom-4 right-10 rotate-3" ink>Peer reviewed</Sticker>
+        <p {...build} className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Publications</p>
+        <h1 {...build} className="mt-3 text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
           <Drift distance={-8}>My</Drift>
           <Drift distance={-20} className="pl-[18%]">Publications</Drift>
         </h1>
@@ -848,16 +867,16 @@ export function AxisProjects() {
     <Frame>
       <Top />
       <section className="relative border-b border-black py-8">
-        <Sticker className="bottom-3 left-[46%] -rotate-2" ink>Shipped</Sticker>
-        <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Projects</p>
-        <h1 className="mt-3 text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
+        <Sticker mark className="bottom-3 left-[46%] -rotate-2" ink>Shipped</Sticker>
+        <p {...build} className="font-mono text-[0.68rem] uppercase tracking-[0.16em]">Projects</p>
+        <h1 {...build} className="mt-3 text-[clamp(2.5rem,8vw,6rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
           <Drift distance={-8}>Applied</Drift>
           <Drift distance={-18} className="pl-[16%]">AI Systems</Drift>
         </h1>
       </section>
       {pinnedProjects.map((project, index) => (
         <Row key={project.title} index={String(index + 1).padStart(2, "0")} label={project.tech}>
-          <Crook turn={index % 2 === 0 ? -0.8 : 1.1} className="relative">
+          <Crook mark turn={index % 2 === 0 ? -0.8 : 1.1} className="relative">
             {index === 0 ? <Sticker className="-left-1 -top-4 -rotate-6">For you</Sticker> : null}
             {index === 1 ? <Sticker className="right-2 -top-4 rotate-6"><ScaleMark /> Fair</Sticker> : null}
           <h2 className={`text-4xl font-semibold tracking-tight ${index < 2 ? "mt-4" : ""}`}>{project.title}</h2>

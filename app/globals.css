@@ -285,7 +285,7 @@ html[data-theme="axis"] .custom-cursor-glow {
 }
 
 .signal-marquee {
-  animation: signal-marquee 28s linear infinite;
+  animation: signal-marquee 52s linear infinite;
 }
 
 @keyframes signal-marquee {
