@@ -120,7 +120,18 @@ function Frame({ children }: { children: React.ReactNode }) {
     import("../swarm-build/swarm-build.js").then(({ swarmBuildPage }) => {
       const nodes = rootRef.current?.querySelectorAll<HTMLElement>("[data-swarm-block]");
       if (dead || !nodes?.length) return;
-      swarm = swarmBuildPage(nodes, { speed: 1.55, typeSpeed: 1.8 });
+      swarm = swarmBuildPage(nodes, {
+        speed: 1.55,
+        typeSpeed: 1.8,
+        agents: [
+          { name: "Bias", color: "#2563eb", text: "#fff" },
+          { name: "Fair", color: "#e11d48", text: "#fff" },
+          { name: "Group", color: "#15803d", text: "#fff" },
+          { name: "Rank", color: "#f59e0b", text: "#17171a" },
+          { name: "Parity", color: "#9333ea", text: "#fff" },
+          { name: "Exposure", color: "#0e7490", text: "#fff" },
+        ],
+      });
     });
     return () => {
       dead = true;
